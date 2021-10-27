@@ -15,10 +15,10 @@
       <div class="container">
 
         <div class="d-flex justify-content-between align-items-center">
-          <h2>Inner Page</h2>
+          <h2>Add location</h2>
           <ol>
             <li><a href="/">Home</a></li>
-            <li>Inner Page</li>
+            <li>Add location</li>
           </ol>
         </div>
 
@@ -27,9 +27,29 @@
 
     <section class="inner-page">
       <div class="container">
-        <p>
-          Example inner page template
-        </p>
+          <form action="#" th:action="@{/add-location}" method="post" role="form" class="php-email-form">
+            <div class="form-group mt-3">
+              <label for="locationName">Location Name</label>
+              <input type="text" class="form-control" name="location_name" id="locationName" required>
+            </div>
+            <div class="form-group mt-3">
+              <label for="message">Message</label>
+              <textarea id="message" class="form-control" name="message" rows="10" required></textarea>
+            </div>
+            <div class="form-group mt-3">
+              <label for="image">Image</label>
+              <input type="file" class="form-control" name="image" id="image" accept=".png,.jpg,.jpeg">
+            </div>
+<!--            <div class="my-3">-->
+<!--              <div class="loading">Loading</div>-->
+<!--              <div class="error-message"></div>-->
+<!--              <div class="sent-message">Your message has been sent. Thank you!</div>-->
+<!--            </div>-->
+            <div class="text-center"><button type="submit">Send Message</button></div>
+          </form>
+<!--        <p>-->
+<!--          Example inner page template-->
+<!--        </p>-->
       </div>
     </section>
 
