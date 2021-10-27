@@ -1,11 +1,11 @@
-drop table if exists locations cascade;
+drop table if exists locations_table cascade;
 
 create table locations_table
 (
 	id serial primary key,
-	title varchar,
-	message varchar,
-	image varchar
+	title varchar(255),
+	message varchar(255),
+	image varchar(255)
 );
 
 

@@ -63,4 +63,13 @@ public class Location {
     }
 
 
+    @Override
+    public String toString() {
+        return "Location{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", message='" + message + '\'' +
+                ", imageUrl='" + imageUrl + '\'' +
+                '}';
+    }
 }
