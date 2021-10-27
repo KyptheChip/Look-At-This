@@ -299,6 +299,23 @@
 
   </main><!-- End #main -->
 
+  <table>
+    <tr>
+      <th>Id</th>
+      <th>Title</th>
+      <th>Message</th>
+      <th>Image</th>
+    </tr>
+
+    <tr th:each="location : ${locations}">
+      <td th:text="${location.id}">Id</td>
+      <td th:text="${location.title}">Title</td>
+      <td th:text="${location.message}">Message</td>
+      <td th:src="@{location.imageUrl}"></td>
+    </tr>
+  </table>
+
+
   <!-- ======= Footer ======= -->
   <footer th:replace="parts/Footer.html :: copy"></footer><!-- End Footer -->
 
