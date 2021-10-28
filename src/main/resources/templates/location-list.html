@@ -25,11 +25,17 @@
 
         <section class="inner-page">
             <div class="container">
-                <div class="card" th:each="location: ${locations}" style="width: 18rem;">
-                    <img class="card-img-top" th:src="@{'location/image/' + ${location.id}}" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title" th:text="${location.getTitle()}"></h5>
-                        <p class="card-text" th:text="${location.getMessage()}"></p>
+                <div class="card mb-3" th:each="location: ${locations}" style="max-width: 800px;">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img class="img-fluid rounded-start" th:src="@{'location/image/' + ${location.id}}" alt="Card image cap">
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title" th:text="${location.getTitle()}"></h5>
+                            <p class="card-text" th:text="${location.getMessage()}"></p>
+                        </div>
                     </div>
                 </div>
             </div>
