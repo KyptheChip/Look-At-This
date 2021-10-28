@@ -6,9 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.view.RedirectView;
 
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.io.IOException;
 import java.util.List;
 
 @Controller
@@ -38,5 +41,24 @@ public class IndexController {
     @GetMapping("/add-location")
     public String addLocation() {
         return "location-form";
+    }
+
+    @PostMapping("/add-location")
+    public RedirectView saveLocation(
+            @RequestParam(name = "location_name") String title,
+            @RequestParam(name = "message") String message,
+            @RequestParam(name = "image") MultipartFile image
+    ) throws IOException {
+        Location location;
+        if (image != null){
+            location = new Location(title, message, image.getBytes());
+        } else {
+            location = new Location();
+            location.setTitle(title);
+            location.setMessage(message);
+        }
+        locationRepository.save(location);
+
+        return new RedirectView("/");
     }
 }
