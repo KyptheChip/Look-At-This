@@ -27,9 +27,7 @@ public class IndexController {
     private LocationRepository locationRepository;
 
     @GetMapping("/")
-    public String index(Model model) {
-        List<Location> locations = (List<Location>) locationRepository.findAll();
-        model.addAttribute("locations", locations);
+    public String index() {
         return "index";
     }
 
