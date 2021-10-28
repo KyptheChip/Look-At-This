@@ -30,11 +30,11 @@
                         <div class="col-md-4">
                             <img class="img-fluid rounded-start" th:src="@{'location/image/' + ${location.id}}" alt="Card image cap">
                         </div>
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card-body">
-                            <h5 class="card-title" th:text="${location.getTitle()}"></h5>
-                            <p class="card-text" th:text="${location.getMessage()}"></p>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title" th:text="${location.getTitle()}"></h5>
+                                <p class="card-text" th:text="${location.getMessage()}"></p>
+                            </div>
                         </div>
                     </div>
                 </div>
