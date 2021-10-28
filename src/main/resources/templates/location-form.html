@@ -28,6 +28,13 @@
     <section class="inner-page">
       <div class="container">
           <form action="#" th:action="@{/add-location}" method="post" role="form" class="php-email-form">
+            <div id="map" style="width: 100%; height: 50vh"></div>
+            <div class="form-group mt-3">
+              <label for="locationLatitude">Location Latitude</label>
+              <input type="number" class="form-control" name="location_name" id="locationLatitude" step="0.01" required>
+              <label for="locationLongitude">Location Longitude</label>
+              <input type="number" class="form-control" name="location_name" id="locationLongitude" step="0.01" required>
+            </div>
             <div class="form-group mt-3">
               <label for="locationName">Location Name</label>
               <input type="text" class="form-control" name="location_name" id="locationName" required>
