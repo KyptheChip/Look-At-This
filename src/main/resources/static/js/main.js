@@ -263,3 +263,42 @@
   });
 
 })()
+
+const platform = new H.service.Platform({
+  apikey: "1sAoW8xIFuR8nJtk4ViLLSIbhKMJOJmrJkGoQdHhEhA"
+});
+
+var defaultLayers = platform.createDefaultLayers();
+
+var map = new H.Map(document.getElementById("map"),
+    defaultLayers.vector.normal.map,
+    {
+      center: {lat: 50, lng: 5},
+      zoom: 10
+    }
+    )
+
+var behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(map));
+
+var ui = H.ui.UI.createDefault(map, defaultLayers);
+
+map.addEventListener("tap", async event => {
+  const position = map.screenToGeo(
+      event.currentPointer.viewportX,
+      event.currentPointer.viewportY
+  )
+
+  map.removeObjects(map.getObjects());
+
+  const marker = new H.map.Marker(position);
+  map.addObject(marker);
+
+  document.getElementById("locationLatitude").value = position.lat;
+  document.getElementById("locationLongitude").value = position.lng;
+
+})
+
+window.onload = function () {
+  map.setCenter({lat:44.4268, lng:26.1025});
+  map.setZoom(8);
+}
