@@ -264,6 +264,13 @@
 
 })()
 
+function setStyle(map){
+  var provider = map.getBaseLayer().getProvider();
+
+  var style = new H.map.Style('https://heremaps.github.io/maps-api-for-javascript-examples/change-style-at-load/data/dark.yaml');
+  provider.setStyle(style);
+}
+
 const platform = new H.service.Platform({
   apikey: "1sAoW8xIFuR8nJtk4ViLLSIbhKMJOJmrJkGoQdHhEhA"
 });
@@ -281,6 +288,8 @@ var map = new H.Map(document.getElementById("map"),
 var behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(map));
 
 var ui = H.ui.UI.createDefault(map, defaultLayers);
+
+setStyle(map);
 
 map.addEventListener("tap", async event => {
   const position = map.screenToGeo(
