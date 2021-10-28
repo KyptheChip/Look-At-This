@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+
+<head th:replace="parts/Head.html :: copy"></head>
+
+<body>
+
+    <header th:replace="parts/Header.html :: copy"></header><!-- End Header -->
+
+    <main id="main">
+        <!-- ======= Breadcrumbs ======= -->
+        <section class="breadcrumbs">
+            <div class="container">
+
+                <div class="d-flex justify-content-between align-items-center">
+                    <h2>All locations</h2>
+                    <ol>
+                        <li><a href="/">Home</a></li>
+                        <li>All locations</li>
+                    </ol>
+                </div>
+
+            </div>
+        </section><!-- End Breadcrumbs -->
+
+        <section class="inner-page">
+            <div class="container">
+                <div class="card" th:each="location: ${locations}" style="width: 18rem;">
+                    <img class="card-img-top" th:src="@{'location/image/' + ${location.id}}" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title" th:text="${location.getTitle()}"></h5>
+                        <p class="card-text" th:text="${location.getMessage()}"></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+</body>
+</html>
