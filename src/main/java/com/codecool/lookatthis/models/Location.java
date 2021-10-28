@@ -17,14 +17,13 @@ public class Location {
     @Column(name="message", nullable = false)
     private String message;
 
-    @Column(name="image", nullable = false)
-    private String imageUrl;
+    @Column(name="image")
+    private byte[] imageData;
 
-    public Location(Long id, String title, String message, String imageUrl) {
-        this.id = id;
+    public Location(String title, String message, byte[] imageData) {
         this.title = title;
         this.message = message;
-        this.imageUrl = imageUrl;
+        this.imageData = imageData;
     }
 
     public Location() {
@@ -54,12 +53,12 @@ public class Location {
         this.message = message;
     }
 
-    public String getImageUrl() {
-        return imageUrl;
+    public byte[] getImageData() {
+        return imageData;
     }
 
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
+    public void setImageData(byte[] imageUrl) {
+        this.imageData = imageUrl;
     }
 
 
@@ -69,7 +68,7 @@ public class Location {
                 "id=" + id +
                 ", title='" + title + '\'' +
                 ", message='" + message + '\'' +
-                ", imageUrl='" + imageUrl + '\'' +
+                ", imageUrl='" + imageData + '\'' +
                 '}';
     }
 }
