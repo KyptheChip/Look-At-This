@@ -17,7 +17,7 @@ public class Location {
     @Column(name="message", nullable = false)
     private String message;
 
-    @Column(name="image")
+    @Column(name="image", nullable = false)
     private byte[] imageData;
 
     public Location(String title, String message, byte[] imageData) {
