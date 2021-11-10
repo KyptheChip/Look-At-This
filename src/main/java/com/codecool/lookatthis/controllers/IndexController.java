@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin("http://localhost:3001/")
+@CrossOrigin("http://localhost:3000/")
 @RestController
 public class IndexController {
 
@@ -19,6 +19,7 @@ public class IndexController {
         return (List<Location>) locationRepository.findAll();
     }
 
+    @CrossOrigin("http://localhost:3000")
     @PostMapping("/add-location")
     public void saveLocation(@RequestBody Location location) {
         locationRepository.save(location);
