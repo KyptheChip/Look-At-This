@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import {DisplayMapFC} from "./Map"
 
 export default function Form() {
   const [location, setLocation] = useState({
@@ -51,7 +52,8 @@ export default function Form() {
     <section className="inner-page">
       <div className="container">
         <form onSubmit={handleSubmit} className="php-email-form" encType='multipart/form-data'>
-          <div id="map" style={{width: '100%', height: '50vh'}}/>
+          {/*<div id="map" style={{width: '100%', height: '50vh'}}/>*/}
+          <DisplayMapFC/>
           <div className="form-group mt-3">
             <label htmlFor="locationLatitude">Location Latitude</label>
             <input type="number" className="form-control" name="location_lat" id="locationLatitude" step="any" required/>
