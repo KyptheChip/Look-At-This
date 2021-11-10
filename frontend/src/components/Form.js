@@ -2,29 +2,45 @@ import React, {useState} from "react";
 
 export default function Form() {
   const [location, setLocation] = useState({
-    title : "",
-    message : "",
-    imageData: ""
+    "id": "0",
+    "title": "",
+    "message": ""
   });
+
+  const [imageUrl, setImageUrl] = useState("")
 
   const handleChange = event => {
     const {name, value} = event.target;
     setLocation({
-      ...location, [name] : value
+      ...location,
+      [name] : value
     });
     console.log(location);
   }
 
+  const handleImageChange = e => {
+    let reader = new FileReader();
+    let dataURL = e.target.files[0]
+    reader.readAsDataURL(dataURL)
+    reader.onload = function (e) {
+      setImageUrl(reader.result.replace(/^data:image\/(png|jpg|jpeg);base64,/, ""))
+    }
+  }
+
   const handleSubmit = event => {
     event.preventDefault();
+    let locationToSend = {
+      ...location,
+      "imageData": imageUrl
+    }
     fetch(
-      "http://localhost:8080/add-location",
+      "http://0.0.0.0:8080/add-location",
       {
         method : "POST",
         headers : {
           "Content-Type" : "application/json"
         },
-        body : JSON.stringify(location)
+        body : JSON.stringify(locationToSend)
       })
       .then(response => response.json())
       .catch(function() {});
@@ -52,7 +68,7 @@ export default function Form() {
           </div>
           <div className="form-group mt-3">
             <label htmlFor="image">Image</label>
-            <input type="file" className="form-control" name="imageData" id="image" accept=".png,.jpg,.jpeg" value={location.imageData} onChange={handleChange} />
+            <input type="file" className="form-control" name="imageData" id="image" accept=".png,.jpg,.jpeg" value={imageUrl.imageData} onChange={handleImageChange} />
           </div>
           <div className="text-center">
             <button type="submit">Send Message</button>

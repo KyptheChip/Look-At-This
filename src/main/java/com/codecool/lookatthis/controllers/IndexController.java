@@ -19,7 +19,6 @@ public class IndexController {
         return (List<Location>) locationRepository.findAll();
     }
 
-    @CrossOrigin("http://localhost:3000")
     @PostMapping("/add-location")
     public void saveLocation(@RequestBody Location location) {
         locationRepository.save(location);
