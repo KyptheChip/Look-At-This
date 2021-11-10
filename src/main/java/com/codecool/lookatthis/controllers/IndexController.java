@@ -64,7 +64,7 @@ public class IndexController {
         }
         locationRepository.save(location);
 
-        return new RedirectView("/");
+        return new RedirectView("/location-list");
     }
 
     @GetMapping("/location/image/{id}")
