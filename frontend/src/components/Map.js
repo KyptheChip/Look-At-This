@@ -7,8 +7,8 @@ export function DisplayMapFC() {
     const [viewport, setViewport] = React.useState({
         latitude: 44.4361414,
         longitude: 26.1027202,
-        width: "70vw",
-        height: "80vh",
+        width: "100%",
+        height: "700px",
         zoom: 10
     });
 
