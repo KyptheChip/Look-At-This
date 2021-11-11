@@ -1,6 +1,5 @@
 import React, {useState} from "react";
 import {DisplayMapFC} from "./Map"
-import {Link} from "react-router-dom";
 
 export default function Form() {
   const [location, setLocation] = useState({
