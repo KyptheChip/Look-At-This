@@ -1,59 +1,64 @@
 import * as React from 'react';
+import ReactMapGL, {Marker} from 'react-map-gl';
 
-export const DisplayMapFC = () => {
-    // Create a reference to the HTML element we want to put the map on
-    const mapRef = React.useRef(null);
+const API_TOKEN='pk.eyJ1Ijoic2llYmVsIiwiYSI6ImNrdnU1ejV0bDB5ZzcydWx5ZDU0c2Vxa2sifQ.MIC6kFfc4VYuz-H6awJ4IQ';
 
-    /**
-     * Create the map instance
-     * While `useEffect` could also be used here, `useLayoutEffect` will render
-     * the map sooner
-     */
+export function DisplayMapFC() {
+    const [viewport, setViewport] = React.useState({
+        latitude: 44.4361414,
+        longitude: 26.1027202,
+        width: "70vw",
+        height: "80vh",
+        zoom: 10
+    });
 
-    React.useLayoutEffect(() => {
-        // `mapRef.current` will be `undefined` when this hook first runs; edge case that
-        if (!mapRef.current) return;
-        const H = window.H;
-        const platform = new H.service.Platform({
-            apikey: "1sAoW8xIFuR8nJtk4ViLLSIbhKMJOJmrJkGoQdHhEhA"
+    const [marker, setMarker] = React.useState({
+        latitude: 44.4361414,
+        longitude: 26.1027202
+    });
+
+    const addMarker = (e) => {
+        const [lng, lat] = e.lngLat
+        setMarker({
+            latitude : lat,
+            longitude : lng,
         });
-        const defaultLayers = platform.createDefaultLayers();
-        const hMap = new H.Map(mapRef.current, defaultLayers.vector.normal.map, {
-                center: {lat: 44.4268, lng: 26.1025},
-                zoom: 8,
-                pixelRatio: window.devicePixelRatio || 1
-            }
-        );
 
-        const provider = hMap.getBaseLayer().getProvider();
-        const style = new H.map.Style('https://heremaps.github.io/maps-api-for-javascript-examples/change-style-at-load/data/dark.yaml');
-        provider.setStyle(style);
+        document.getElementById("locationLatitude").value = marker.latitude
+        document.getElementById("locationLongitude").value = marker.longitude
+    }
 
-        const behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(hMap));
+    const ICON = `M20.2,15.7L20.2,15.7c1.1-1.6,1.8-3.6,1.8-5.7c0-5.6-4.5-10-10-10S2,4.5,2,10c0,2,0.6,3.9,1.6,5.4c0,0.1,0.1,0.2,0.2,0.3
+        c0,0,0.1,0.1,0.1,0.2c0.2,0.3,0.4,0.6,0.7,0.9c2.6,3.1,7.4,7.6,7.4,7.6s4.8-4.5,7.4-7.5c0.2-0.3,0.5-0.6,0.7-0.9
+        C20.1,15.8,20.2,15.8,20.2,15.7z`;
 
-        const ui = H.ui.UI.createDefault(hMap, defaultLayers);
+    const pinStyle = {
+        cursor: 'pointer',
+        fill: '#d00',
+        stroke: 'none'
+    };
 
-        hMap.addEventListener("tap", async event => {
-            const position = hMap.screenToGeo(
-                event.currentPointer.viewportX,
-                event.currentPointer.viewportY
-            )
-
-            hMap.removeObjects(hMap.getObjects());
-
-            const marker = new H.map.Marker(position);
-            hMap.addObject(marker);
-
-            document.getElementById("locationLatitude").value = position.lat;
-            document.getElementById("locationLongitude").value = position.lng;
-        })
-
-        // This will act as a cleanup to run once this hook runs again.
-        // This includes when the component un-mounts
-        return () => {
-            hMap.dispose();
-        };
-    }, [mapRef]); // This will run this hook every time this ref is updated
-
-    return <div className="map" ref={mapRef} style={{ height: "500px" }} />;
-};
+    return (
+      <div>
+          <ReactMapGL
+            {...viewport}
+            mapboxApiAccessToken={API_TOKEN}
+            mapStyle={'mapbox://styles/siebel/ckvu9qik01j7l14paano3z43q'}
+            onViewportChange={viewport => {
+                setViewport(viewport);
+            }}
+            onClick={addMarker}
+          >
+              <Marker longitude={marker.longitude} latitude={marker.latitude}>
+                  <svg
+                      height={20}
+                      viewBox="0 0 24 24"
+                      style={{...pinStyle, transform: `translate(-10px,-23px)`}}
+                  >
+                      <path d={ICON}/>
+                  </svg>
+              </Marker>
+          </ReactMapGL>
+      </div>
+    );
+}
