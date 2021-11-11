@@ -1,12 +1,14 @@
-import Navbar from "./components/Navbar";
-import Form from "./components/Form";
+import Pages from "./pages/MainPage";
 import './App.css';
 
 function App() {
-  return [
-    <Navbar/>,
-    <Form/>
-  ]
+
+
+  return (
+    <div>
+      <Pages/>
+    </div>
+  );
 }
 
 export default App;
