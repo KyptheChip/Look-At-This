@@ -33,9 +33,9 @@ public class IndexController {
         locationService.updateLocation(location);
     }
 
-    @DeleteMapping("/delete-location")
-    public void deleteLocation(@RequestBody Location location) {
-        locationService.deleteLocation(location);
+    @DeleteMapping("/delete-location/{id}")
+    public void deleteLocation(@PathVariable("id") Long id) {
+        locationService.deleteById(id);
     }
 
 }

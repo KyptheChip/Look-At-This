@@ -44,8 +44,8 @@ public class LocationService {
         }
     }
 
-    public void deleteLocation(Location location) {
-        locationRepository.deleteById(location.getId());
+    public void deleteById(Long id) {
+        locationRepository.deleteById(id);
     }
 
     public List<Location> getAllOrderedByTitleAsc() {
