@@ -1,14 +1,21 @@
 package com.codecool.lookatthis.models;
 
+import lombok.*;
+
 import javax.persistence.*;
 
 @Entity
-@Table(name = "locations_table")
+@Table(name = "location")
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
+@ToString
 public class Location {
 
     @Id
     @Column(name="id", nullable = false, updatable = false)
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name="title", nullable = false)
@@ -20,55 +27,9 @@ public class Location {
     @Column(name="image", nullable = false)
     private byte[] imageData;
 
-    public Location(String title, String message, byte[] imageData) {
-        this.title = title;
-        this.message = message;
-        this.imageData = imageData;
-    }
+    @Column(name="latitude", nullable = false)
+    private double latitude;
 
-    public Location() {
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
-    public byte[] getImageData() {
-        return imageData;
-    }
-
-    public void setImageData(byte[] imageUrl) {
-        this.imageData = imageUrl;
-    }
-
-
-    @Override
-    public String toString() {
-        return "Location{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                ", message='" + message + '\'' +
-                ", imageUrl='" + imageData + '\'' +
-                '}';
-    }
+    @Column(name="longitude", nullable = false)
+    private double longitude;
 }
