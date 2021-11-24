@@ -3,12 +3,18 @@ import {DisplayMapFC} from "./Map"
 
 export default function Form() {
   const [location, setLocation] = useState({
-    "id": "0",
-    "title": "",
-    "message": ""
+    id: 0,
+    title: "",
+    message: ""
   });
 
+  const [coordinates, setCoordinates] = useState({
+    longitude: 0,
+    latitude: 0
+  })
+
   const [imageUrl, setImageUrl] = useState("")
+
 
   const handleChange = event => {
     const {name, value} = event.target;
@@ -26,14 +32,20 @@ export default function Form() {
     reader.onload = function (e) {
       setImageUrl(reader.result.replace(/^data:image\/(png|jpg|jpeg);base64,/, ""))
     }
+    setCoordinates({
+      latitude: document.getElementById("locationLatitude").innerText,
+      longitude: document.getElementById("locationLongitude").innerText
+    })
   }
 
   const handleSubmit = event => {
     event.preventDefault();
     let locationToSend = {
       ...location,
-      "imageData": imageUrl
+      imageData: imageUrl,
+      ...coordinates
     }
+    console.log(locationToSend);
     fetch(
       "http://0.0.0.0:8080/add-location",
       {
@@ -55,9 +67,11 @@ export default function Form() {
           <DisplayMapFC/>
           <div className="form-group mt-3">
             <label htmlFor="locationLatitude">Location Latitude</label>
-            <input type="number" className="form-control" name="location_lat" id="locationLatitude" step="any" required/>
+            {/*<input type="number" className="form-control" name="location_lat" id="locationLatitude" step="any" value={coordinates.latitude} required/>*/}
+            <p id="locationLatitude">{coordinates.latitude}</p>
             <label htmlFor="locationLongitude">Location Longitude</label>
-              <input type="number" className="form-control" name="location_lng" id="locationLongitude" step="any" required/>
+            {/*<input type="number" className="form-control" name="location_lng" id="locationLongitude" step="any" value={coordinates.longitude} required/>*/}
+            <p id="locationLongitude">{coordinates.longitude}</p>
           </div>
           <div className="form-group mt-3">
             <label htmlFor="locationName">Location Name</label>

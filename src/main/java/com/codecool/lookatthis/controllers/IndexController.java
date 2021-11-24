@@ -1,7 +1,7 @@
 package com.codecool.lookatthis.controllers;
 
 import com.codecool.lookatthis.models.Location;
-import com.codecool.lookatthis.repository.LocationRepository;
+import com.codecool.lookatthis.service.LocationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,17 +11,21 @@ import java.util.List;
 @RestController
 public class IndexController {
 
+    private LocationService locationService;
+
     @Autowired
-    private LocationRepository locationRepository;
+    public IndexController(LocationService locationService) {
+        this.locationService = locationService;
+    }
 
     @GetMapping("/location-list")
     public List<Location> getAllLocations() {
-        return (List<Location>) locationRepository.findAll();
+        return locationService.getAllLocations();
     }
 
     @PostMapping("/add-location")
     public void saveLocation(@RequestBody Location location) {
-        locationRepository.save(location);
+        locationService.addLocation(location);
     }
 
 
