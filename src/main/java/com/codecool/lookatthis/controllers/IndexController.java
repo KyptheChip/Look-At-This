@@ -28,5 +28,14 @@ public class IndexController {
         locationService.addLocation(location);
     }
 
+    @PutMapping("/edit-location")
+    public void updateLocation(@RequestBody Location location) {
+        locationService.updateLocation(location);
+    }
+
+    @DeleteMapping("/delete-location/{id}")
+    public void deleteLocation(@PathVariable("id") Long id) {
+        locationService.deleteById(id);
+    }
 
 }

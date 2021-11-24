@@ -12,6 +12,15 @@ export default function LocationsList() {
       })
   }, []);
 
+  const deleteLocation = (event) => {
+    fetch(
+      'http://localhost:8080/delete-location/' + event.target.id,
+      {
+        method: 'DELETE'
+      })
+      .then(response => console.log(response.json()));
+  }
+
   return (
     <section className="inner-page">
       <div className="container">
@@ -26,6 +35,7 @@ export default function LocationsList() {
                 <div className="card-body">
                   <h5 className="card-title">{location.title}</h5>
                   <p className="card-text">{location.message}</p>
+                  <button id={location.id} onClick={deleteLocation}>Delete Location</button>
                 </div>
               </div>
             </div>

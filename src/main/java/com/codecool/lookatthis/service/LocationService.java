@@ -30,9 +30,9 @@ public class LocationService {
         return locationRepository.getById(id);
     }
 
-    public void updateLocationById(Long id, Location updatedLocation) {
+    public void updateLocation(Location updatedLocation) {
         Location location;
-        Optional<Location> optional = locationRepository.findById(id);
+        Optional<Location> optional = locationRepository.findById(updatedLocation.getId());
         if (optional.isPresent()) {
             location = optional.get();
 
