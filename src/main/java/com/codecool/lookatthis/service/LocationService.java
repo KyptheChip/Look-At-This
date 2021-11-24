@@ -30,9 +30,9 @@ public class LocationService {
         return locationRepository.getById(id);
     }
 
-    public void updateLocationById(Long id, Location updatedLocation) {
+    public void updateLocation(Location updatedLocation) {
         Location location;
-        Optional<Location> optional = locationRepository.findById(id);
+        Optional<Location> optional = locationRepository.findById(updatedLocation.getId());
         if (optional.isPresent()) {
             location = optional.get();
 
@@ -44,8 +44,8 @@ public class LocationService {
         }
     }
 
-    public void deleteById(Long id) {
-        locationRepository.deleteById(id);
+    public void deleteLocation(Location location) {
+        locationRepository.deleteById(location.getId());
     }
 
     public List<Location> getAllOrderedByTitleAsc() {
