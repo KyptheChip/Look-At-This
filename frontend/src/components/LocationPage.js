@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {useParams} from "react-router";
+import {EmbedMap} from "./EmbedMap";
 import {Link} from "react-router-dom";
 
 export default function LocationPage() {
@@ -46,13 +47,15 @@ export default function LocationPage() {
               </div>
               <div className="col-md-8">
                 <div className="card-body">
-                  <h5 className="card-title">{location.title}</h5>
+                    <EmbedMap location={location}/>
+                    <h5 className="card-title">{location.title}</h5>
                   <p className="card-text">{location.message}</p>
                   <p><button id={location.id} onClick={deleteLocation}>Delete location</button></p>
                   <p><button id={location.id}><Link to={'/edit-location/' + locationId}>Update location</Link></button></p>
                 </div>
               </div>
             </div>
+
           </div>
       </div>
     </section>
