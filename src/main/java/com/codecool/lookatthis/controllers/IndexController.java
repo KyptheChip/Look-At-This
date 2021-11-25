@@ -28,6 +28,11 @@ public class IndexController {
         locationService.addLocation(location);
     }
 
+    @GetMapping("/location/{id}")
+    public Location getLocationById(@PathVariable("id") Long id) {
+        return locationService.getLocationById(id);
+    }
+
     @PutMapping("/edit-location")
     public void updateLocation(@RequestBody Location location) {
         locationService.updateLocation(location);

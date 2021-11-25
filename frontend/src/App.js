@@ -5,6 +5,7 @@ import Form from "./components/Form";
 import LocationsList from "./components/LocationsList";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import LocationPage from "./components/LocationPage";
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
                   <Route exact path='/' element={<Form/>}/>
                   <Route exact path='/add-location' element={<Form/>}/>
                   <Route exact path='/location-list' element={<LocationsList/>}/>
+                  <Route exact path='/location/:locationId' element={<LocationPage/>}/>
               </Routes>
               <Footer/>
           </Router>
