@@ -1,8 +1,14 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {DisplayMapFC} from "./Map"
 import {Link} from "react-router-dom";
 
 export default function Form() {
+  useEffect(() => {
+    fetch("http://localhost:8080/tag-list")
+      .then(response => response.json())
+      .then(data => setAllTags(data))
+  });
+
   const [location, setLocation] = useState({
     id: 0,
     title: "",
@@ -16,6 +22,8 @@ export default function Form() {
 
   const [imageUrl, setImageUrl] = useState("")
 
+  const [allTags, setAllTags] = useState([])
+  const [tags, setTags] = useState([]);
 
   const handleChange = event => {
     const {name, value} = event.target;
@@ -39,12 +47,22 @@ export default function Form() {
     })
   }
 
+  const handleTagAdd = (event) => {
+    setTags(
+      [...tags, {
+        id: event.target.id,
+        name: event.target.innerText
+      }]
+    );
+  }
+
   const handleSubmit = event => {
     event.preventDefault();
     let locationToSend = {
       ...location,
       imageData: imageUrl,
-      ...coordinates
+      ...coordinates,
+      tags : tags
     }
     console.log(locationToSend);
     fetch(
@@ -85,6 +103,10 @@ export default function Form() {
           <div className="form-group mt-3">
             <label htmlFor="image">Image</label>
             <input type="file" className="form-control" name="imageData" id="image" accept=".png,.jpg,.jpeg" value={imageUrl.imageData} onChange={handleImageChange} />
+          </div>
+          <div className="form-group mt-3">
+            <p>Tags(Click to add a tag)</p>
+            {allTags.map(tag => <p><button type="button" id={tag.id} onClick={handleTagAdd}>{tag.name}</button></p>)}
           </div>
           <div className="text-center">
             <button type="submit"><Link className='link' to={'/location-list'}>Add Location</Link></button>
