@@ -3,9 +3,11 @@
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
-body {
+body, html {
   font-family: "Open Sans", sans-serif;
   color: #444444;
+  height: 100%;
+  margin: 0;
 }
 
 a {
@@ -1181,7 +1183,21 @@ section {
   .breadcrumbs ol li {
     display: inline-block;
   }
+
+
 }
+.link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.search-bar-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+}
+
 
 /*--------------------------------------------------------------
 # Footer

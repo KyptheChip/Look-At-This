@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {useParams} from "react-router";
+import {EmbedMap} from "./EmbedMap";
 import {Link} from "react-router-dom";
 
 export default function LocationPage() {
@@ -25,7 +26,7 @@ export default function LocationPage() {
       .then((response) => {
         setLocation(response)
       });
-  }, []);
+  });
 
   const deleteLocation = (event) => {
     fetch(
@@ -44,17 +45,20 @@ export default function LocationPage() {
               <div className="col-md-4">
                 <img className="img-fluid rounded-start" src={`data:image/jpeg;base64,${location.imageData}`}
                      alt=""/>
+                  <EmbedMap location={location}/>
+
               </div>
               <div className="col-md-8">
                 <div className="card-body">
-                  <h5 className="card-title">{location.title}</h5>
+                    <h5 className="card-title">{location.title}</h5>
                   <p className="card-text">{location.message}</p>
-                  <p>{location.tags.map(tag => <Link to={'/locations-by-tag/' + tag.id}>#{tag.name} </Link>)}</p>
-                  <p><button id={location.id} onClick={deleteLocation}>Delete location</button></p>
-                  <p><button id={location.id}><Link to={'/edit-location/' + locationId}>Update location</Link></button></p>
+                  <p>{location.tags.map(tag => <span key={tag.id} id={tag.id}>#{tag.name} </span>)}</p>
+                  <p><button className='getstarted' id={location.id} onClick={deleteLocation}>Delete location</button></p>
+                  <p><button className='getstarted' id={location.id}><Link className='getstarted' className='link' to={'/edit-location/' + locationId}>Update location</Link></button></p>
                 </div>
               </div>
             </div>
+
           </div>
       </div>
     </section>

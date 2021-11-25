@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {DisplayMapFC} from "./Map"
+import {Link} from "react-router-dom";
 
 export default function Form() {
   useEffect(() => {
@@ -108,7 +109,7 @@ export default function Form() {
             {allTags.map(tag => <p><button type="button" id={tag.id} onClick={handleTagAdd}>{tag.name}</button></p>)}
           </div>
           <div className="text-center">
-            <button type="submit">Send Message</button>
+            <button type="submit"><Link className='link' to={'/location-list'}>Add Location</Link></button>
           </div>
         </form>
       </div>

@@ -14,8 +14,8 @@ public interface LocationRepository extends JpaRepository<Location, Long> {
 
     List<Location> findAllByOrderByTitleAsc();
     List<Location> findAllByOrderByTitleDesc();
-    List<Location> findAllByTitleContaining(String text);
-    List<Location> findAllByMessageContaining(String text);
+    List<Location> findAllByTitleContainingIgnoreCase(String text);
+    List<Location> findAllByMessageContainingIgnoreCase(String text);
 
     @Query(value = "SELECT * FROM location " +
             "JOIN location_tags lt on location.id = lt.location_id " +
