@@ -13,6 +13,14 @@ export default function LocationsList() {
       })
   }, []);
 
+  const getLocationsByTag = async event => {
+    fetch('http://localhost:8080/locations-by-tag/' + event.target.id)
+      .then(response => response.json())
+      .then((response) => {
+        setLocationList(response)
+      })
+  }
+
   return (
     <section className="inner-page">
       <div className="container">
@@ -28,7 +36,7 @@ export default function LocationsList() {
                   <h5 className="card-title"><Link to={"/location/" + location.id}>{location.title}</Link></h5>
                   <p className="card-text">{location.message}</p>
                   <div>
-                    {location.tags.map(tag => <span>#{tag.name} </span>)}
+                    {location.tags.map(tag => <span key={tag.id} id={tag.id} onClick={getLocationsByTag}>#{tag.name} </span>)}
                   </div>
                 </div>
               </div>

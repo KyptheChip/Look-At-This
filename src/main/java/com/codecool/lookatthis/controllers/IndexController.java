@@ -52,4 +52,9 @@ public class IndexController {
         return tagService.getAllTags();
     }
 
+    @GetMapping("/locations-by-tag/{id}")
+    public List<Location> getLocationsByTag(@PathVariable("id") Long id) {
+        return locationService.getAllByTag(id);
+    }
+
 }

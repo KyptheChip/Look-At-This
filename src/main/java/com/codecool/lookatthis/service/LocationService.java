@@ -1,6 +1,7 @@
 package com.codecool.lookatthis.service;
 
 import com.codecool.lookatthis.models.Location;
+import com.codecool.lookatthis.models.Tag;
 import com.codecool.lookatthis.repository.LocationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -68,5 +69,9 @@ public class LocationService {
         resultingLocations = locationsByMessage;
 
         return resultingLocations;
+    }
+
+    public List<Location> getAllByTag(Long id) {
+        return locationRepository.findAllByTagId(id);
     }
 }
