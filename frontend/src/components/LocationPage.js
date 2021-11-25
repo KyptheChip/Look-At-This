@@ -26,15 +26,14 @@ export default function LocationPage() {
       .then((response) => {
         setLocation(response)
       });
-  });
+  }, []);
 
   const deleteLocation = (event) => {
     fetch(
-      'https://localhost:8080/delete-location/' + event.target.id,
+      'http://localhost:8080/delete-location/' + event.target.id,
       {
         method: 'DELETE'
-      })
-      .then(response => console.log(response.json()));
+      });
   }
 
   return (
@@ -54,7 +53,7 @@ export default function LocationPage() {
                   <p className="card-text">{location.message}</p>
                   <p>{location.tags.map(tag => <span key={tag.id} id={tag.id}>#{tag.name} </span>)}</p>
                   <p><button className='getstarted' id={location.id} onClick={deleteLocation}>Delete location</button></p>
-                  <p><button className='getstarted' id={location.id}><Link className='getstarted' className='link' to={'/edit-location/' + locationId}>Update location</Link></button></p>
+                  <p><button className='getstarted' id={location.id}><Link className='getstarted link' to={'/edit-location/' + locationId}>Update location</Link></button></p>
                 </div>
               </div>
             </div>

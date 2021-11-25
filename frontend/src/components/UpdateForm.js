@@ -21,9 +21,8 @@ export default function UpdateForm() {
           latitude: response.latitude
         })
         setImageUrl(response.imageData)
-        console.log(imageUrl)
       })
-  });
+  }, []);
 
 
   const [location, setLocation] = useState({

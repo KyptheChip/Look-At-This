@@ -109,7 +109,7 @@ export default function Form() {
             {allTags.map(tag => <p><button type="button" id={tag.id} onClick={handleTagAdd}>{tag.name}</button></p>)}
           </div>
           <div className="text-center">
-            <button type="submit"><Link className='link' to={'/location-list'}>Add Location</Link></button>
+            <button type="submit">Add Location</button>
           </div>
         </form>
       </div>
