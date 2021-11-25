@@ -13,8 +13,19 @@ export default function LocationsList() {
       })
   }, []);
 
+  const getLocations = async event => {
+      fetch('http://localhost:8080/location-list/' + event.target.value)
+          .then(response => response.json())
+          .then((response) => {
+              setLocationList(response)
+          })
+  }
+
   return (
     <section className="inner-page">
+        <div className="search-bar-container">
+            <input className='search-bar' type="text" placeholder="Search for a location" onChange={getLocations}/>
+        </div>
       <div className="container">
         {locationList.map((location) => (
           <div key={location.id} className="card mb-3" style={{maxWidth: "800px"}}>

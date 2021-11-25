@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import {DisplayMapFC} from "./Map"
+import {Link} from "react-router-dom";
 
 export default function Form() {
   const [location, setLocation] = useState({
@@ -86,7 +87,7 @@ export default function Form() {
             <input type="file" className="form-control" name="imageData" id="image" accept=".png,.jpg,.jpeg" value={imageUrl.imageData} onChange={handleImageChange} />
           </div>
           <div className="text-center">
-            <button type="submit">Send Message</button>
+            <button type="submit"><Link className='link' to={'/location-list'}>Add Location</Link></button>
           </div>
         </form>
       </div>

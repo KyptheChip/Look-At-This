@@ -25,7 +25,7 @@ export default function LocationPage() {
       .then((response) => {
         setLocation(response)
       });
-  }, []);
+  });
 
   const deleteLocation = (event) => {
     fetch(
@@ -44,14 +44,15 @@ export default function LocationPage() {
               <div className="col-md-4">
                 <img className="img-fluid rounded-start" src={`data:image/jpeg;base64,${location.imageData}`}
                      alt=""/>
+                  <EmbedMap location={location}/>
+
               </div>
               <div className="col-md-8">
                 <div className="card-body">
-                    <EmbedMap location={location}/>
                     <h5 className="card-title">{location.title}</h5>
                   <p className="card-text">{location.message}</p>
-                  <p><button id={location.id} onClick={deleteLocation}>Delete location</button></p>
-                  <p><button id={location.id}><Link to={'/edit-location/' + locationId}>Update location</Link></button></p>
+                  <p><button className='getstarted' id={location.id} onClick={deleteLocation}>Delete location</button></p>
+                  <p><button className='getstarted' id={location.id}><Link className='getstarted' className='link' to={'/edit-location/' + locationId}>Update location</Link></button></p>
                 </div>
               </div>
             </div>

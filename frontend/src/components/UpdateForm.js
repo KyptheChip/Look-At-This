@@ -23,7 +23,7 @@ export default function UpdateForm() {
         setImageUrl(response.imageData)
         console.log(imageUrl)
       })
-  }, []);
+  });
 
 
   const [location, setLocation] = useState({

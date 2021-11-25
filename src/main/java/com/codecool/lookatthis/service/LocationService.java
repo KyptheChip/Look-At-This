@@ -57,8 +57,8 @@ public class LocationService {
     }
 
     public List<Location> getAllBySearch(String text) {
-        List<Location> locationsByTitle = locationRepository.findAllByTitleContaining(text);
-        List<Location> locationsByMessage = locationRepository.findAllByMessageContaining(text);
+        List<Location> locationsByTitle = locationRepository.findAllByTitleContainingIgnoreCase(text);
+        List<Location> locationsByMessage = locationRepository.findAllByMessageContainingIgnoreCase(text);
         List<Location> resultingLocations;
 
         for (Location location : locationsByTitle){
