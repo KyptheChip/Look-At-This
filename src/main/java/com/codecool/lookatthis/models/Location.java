@@ -3,6 +3,7 @@ package com.codecool.lookatthis.models;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "location")
@@ -10,7 +11,6 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Getter
 @Setter
-@ToString
 public class Location {
 
     @Id
@@ -32,4 +32,7 @@ public class Location {
 
     @Column(name="longitude", nullable = false)
     private double longitude;
+
+    @OneToMany(targetEntity = Tag.class)
+    private Set<Tag> tags;
 }

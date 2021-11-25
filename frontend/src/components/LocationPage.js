@@ -13,7 +13,8 @@ export default function LocationPage() {
       message: "",
       imageData: "",
       latitude: 0,
-      longitude: 0
+      longitude: 0,
+      tags: []
     }
   );
 
@@ -48,6 +49,7 @@ export default function LocationPage() {
                 <div className="card-body">
                   <h5 className="card-title">{location.title}</h5>
                   <p className="card-text">{location.message}</p>
+                  <p>{location.tags.map(tag => <span>#{tag.name} </span>)}</p>
                   <p><button id={location.id} onClick={deleteLocation}>Delete location</button></p>
                   <p><button id={location.id}><Link to={'/edit-location/' + locationId}>Update location</Link></button></p>
                 </div>
