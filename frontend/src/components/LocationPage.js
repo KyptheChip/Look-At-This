@@ -25,7 +25,7 @@ export default function LocationPage() {
       .then((response) => {
         setLocation(response)
       });
-  }, []);
+  });
 
   const deleteLocation = (event) => {
     fetch(

@@ -43,4 +43,9 @@ public class IndexController {
         locationService.deleteById(id);
     }
 
+    @GetMapping("/location-list/{text}")
+    public List<Location> getSearchedLocations(@PathVariable("text") String text) {
+        return locationService.getAllBySearch(text);
+    }
+
 }
