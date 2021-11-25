@@ -49,7 +49,7 @@ export default function LocationPage() {
                   <h5 className="card-title">{location.title}</h5>
                   <p className="card-text">{location.message}</p>
                   <p><button id={location.id} onClick={deleteLocation}>Delete location</button></p>
-                  <p><button id={location.id}>Update location</button></p>
+                  <p><button id={location.id}><Link to={'/edit-location/' + locationId}>Update location</Link></button></p>
                 </div>
               </div>
             </div>
