@@ -27,7 +27,7 @@ public class LocationService {
     }
 
     public Location getLocationById(Long id) {
-        return locationRepository.getById(id);
+        return locationRepository.findById(id).get();
     }
 
     public void updateLocation(Location updatedLocation) {

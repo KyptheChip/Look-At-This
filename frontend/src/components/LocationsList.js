@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from "react";
+import {Link} from "react-router-dom";
 
 export default function LocationsList() {
 
@@ -12,15 +13,6 @@ export default function LocationsList() {
       })
   }, []);
 
-  const deleteLocation = (event) => {
-    fetch(
-      'http://localhost:8080/delete-location/' + event.target.id,
-      {
-        method: 'DELETE'
-      })
-      .then(response => console.log(response.json()));
-  }
-
   return (
     <section className="inner-page">
       <div className="container">
@@ -33,9 +25,8 @@ export default function LocationsList() {
               </div>
               <div className="col-md-8">
                 <div className="card-body">
-                  <h5 className="card-title">{location.title}</h5>
+                  <h5 className="card-title"><Link to={"/location/" + location.id}>{location.title}</Link></h5>
                   <p className="card-text">{location.message}</p>
-                  <button id={location.id} onClick={deleteLocation}>Delete Location</button>
                 </div>
               </div>
             </div>
