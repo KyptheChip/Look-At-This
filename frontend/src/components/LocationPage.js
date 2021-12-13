@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {useParams} from "react-router";
-import {EmbedMap} from "./EmbedMap";
 import {Link} from "react-router-dom";
+import {EmbedMap} from "./EmbedMap";
 
 export default function LocationPage() {
 
@@ -45,7 +45,6 @@ export default function LocationPage() {
                 <img className="img-fluid rounded-start" src={`data:image/jpeg;base64,${location.imageData}`}
                      alt=""/>
                   <EmbedMap location={location}/>
-
               </div>
               <div className="col-md-8">
                 <div className="card-body">

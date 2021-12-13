@@ -90,10 +90,8 @@ export default function UpdateForm() {
             <DisplayMapFC/>
             <div className="form-group mt-3">
               <label htmlFor="locationLatitude">Location Latitude</label>
-              {/*<input type="number" className="form-control" name="location_lat" id="locationLatitude" step="any" value={coordinates.latitude} required/>*/}
               <p id="locationLatitude">{coordinates.latitude}</p>
               <label htmlFor="locationLongitude">Location Longitude</label>
-              {/*<input type="number" className="form-control" name="location_lng" id="locationLongitude" step="any" value={coordinates.longitude} required/>*/}
               <p id="locationLongitude">{coordinates.longitude}</p>
             </div>
             <div className="form-group mt-3">
@@ -110,7 +108,7 @@ export default function UpdateForm() {
               <input type="file" className="form-control" name="imageData" id="image" accept=".png,.jpg,.jpeg" value={imageUrl.imageData} onChange={handleImageChange} />
             </div>
             <div className="text-center">
-              <button type="submit">Send Message</button>
+              <button type="submit">Update Location</button>
             </div>
           </form>
         </div>
