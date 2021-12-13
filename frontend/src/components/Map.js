@@ -13,6 +13,33 @@ export function DisplayMapFC() {
         container: 'map-container'
     });
 
+  // const [dimensions, setDimensions] = React.useState({
+  //   height: window.innerHeight,
+  //   width: window.innerWidth
+  // })
+
+  React.useEffect(() => {
+    const debouncedHandleResize = debounce(function handleResize() {
+      setViewport(
+        {
+          latitude: viewport.latitude,
+          longitude: viewport.longitude,
+          width: "100%",
+          height: viewport.height,
+          zoom: viewport.zoom,
+          container: viewport.container
+        }
+      )
+    }, 0)
+
+    window.addEventListener('resize', debouncedHandleResize)
+
+    return _ => {
+      window.removeEventListener('resize', debouncedHandleResize)
+
+    }
+  })
+
     const [marker, setMarker] = React.useState({
         latitude: 44.4361414,
         longitude: 26.1027202
@@ -40,7 +67,6 @@ export function DisplayMapFC() {
     };
 
     return (
-      <div>
           <ReactMapGL
             {...viewport}
             mapboxApiAccessToken={API_TOKEN}
@@ -60,6 +86,16 @@ export function DisplayMapFC() {
                   </svg>
               </Marker>
           </ReactMapGL>
-      </div>
     );
+}
+
+function debounce(fn, ms) {
+  let timer
+  return _ => {
+    clearTimeout(timer)
+    timer = setTimeout(_ => {
+      timer = null
+      fn.apply(this, arguments)
+    }, ms)
+  };
 }
