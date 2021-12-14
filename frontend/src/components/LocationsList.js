@@ -20,7 +20,7 @@ export default function LocationsList() {
         setLocationList(response)
       })
   }
-    
+
   const getLocations = async event => {
       fetch('http://localhost:8080/location-list/' + event.target.value)
           .then(response => response.json())
@@ -34,18 +34,18 @@ export default function LocationsList() {
         <div className="search-bar-container">
             <input className='search-bar' type="text" placeholder="Search for a location" onChange={getLocations}/>
         </div>
-      <div className="container">
+      <div className="container columns-2">
         {locationList.map((location) => (
           <div class="max-w-2xl mx-auto overflow-hidden bg-white rounded-lg shadow-md dark:bg-gray-800">
           <img class="object-cover w-full h-64" src={`data:image/jpeg;base64,${location.imageData}`} alt="Article"/>
-  
+
           <div class="p-6">
               <div>
               {location.tags.map(tag => <span key={tag.id} id={tag.id} className="text-xs font-medium text-blue-600 uppercase dark:text-blue-400" onClick={getLocationsByTag}>#{tag.name} </span>)}
                   <a href="#" class="block mt-2 text-2xl font-semibold text-gray-800 dark:text-white hover:text-gray-600 hover:underline"><Link to={"/location/" + location.id}>{location.title}</Link></a>
                   <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">{location.message}</p>
               </div>
-  
+
               <div class="mt-4">
                   <div class="flex items-center">
                       <div class="flex items-center">
@@ -75,7 +75,7 @@ export default function LocationsList() {
     //             </div>
     //           </div>
     //         </div>
-    //       </div> 
+    //       </div>
         ))}
       </div>
    </section>
