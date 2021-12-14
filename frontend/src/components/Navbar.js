@@ -4,68 +4,79 @@ import {Link} from "react-router-dom";
 
 export default function Navbar() {
 
-  
+  const handleClickMenu = (event) => {
+    document.querySelector('#menu').classList.toggle('hidden');
+  }
 
   return (
-    <nav className="bg-green-900 border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-800">
-      <div className="container mx-auto flex flex-wrap items-center justify-between">
-        <a href="#" className="flex">
-          <svg className="h-10 mr-3" viewBox="0 0 52 72" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.87695 53H28.7791C41.5357 53 51.877 42.7025 51.877 30H24.9748C12.2182 30 1.87695 40.2975 1.87695 53Z" fill="#76A9FA"/><path d="M0.000409561 32.1646L0.000409561 66.4111C12.8618 66.4111 23.2881 55.9849 23.2881 43.1235L23.2881 8.87689C10.9966 8.98066 1.39567 19.5573 0.000409561 32.1646Z" fill="#A4CAFE"/><path d="M50.877 5H23.9748C11.2182 5 0.876953 15.2975 0.876953 28H27.7791C40.5357 28 50.877 17.7025 50.877 5Z" fill="#1C64F2"/></svg>
-            <span className="self-center text-lg font-semibold whitespace-nowrap dark:text-white">FlowBite</span>
-        </a>
-      <div className="flex items-center md:order-2">
-        <button type="button" className="mr-3 md:mr-0 bg-gray-800 flex text-sm rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false" type="button" data-dropdown-toggle="dropdown">
-          <span className="sr-only">Open user menu</span>
-          <img className="h-8 w-8 rounded-full" src="" alt="user photo"/>
-        </button>
-
-        <div className="hidden bg-white text-base z-50 list-none divide-y divide-gray-100 rounded shadow my-4 dark:bg-gray-700 dark:divide-gray-600" id="dropdown">
-          <div className="px-4 py-3">
-            <span className="text-gray-900 block text-sm dark:text-white">Bonnie Green</span>
-            <span className="text-gray-500 block text-sm font-medium truncate dark:text-gray-400">name@flowbite.com</span>
-          </div>
-          <ul className="py-1" aria-labelledby="dropdown">
-          <li>
-            <a href="#" className="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Dashboard</a>
-          </li>
-          <li>
-            <a href="#" className="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Settings</a>
-          </li>
-          <li>
-            <a href="#" className="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Earnings</a>
-          </li>
-          <li>
-            <a href="#" className="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign out</a>
-          </li>
-          </ul>
+    <header className="sticky top-0 z-50">
+    <nav
+       class="
+         flex flex-wrap
+         items-center
+         justify-between
+         w-full
+         py-4
+         md:py-0
+         px-4
+         text-lg text-gray-700
+         bg-white
+       "
+     >
+      <div>
+          <a class="flex items-center py-5 px-2 text-black hover:text-lime-800">
+            <img className="h-12 w-15" src="https://img.icons8.com/cotton/64/000000/world-map.png"/>
+            <span class="font-bold text-3xl"><Link to="/">Look at This</Link></span>
+          </a>
         </div>
-        <button data-collapse-toggle="mobile-menu-2" type="button" className="md:hidden ml-1 text-gray-500 hover:bg-gray-100focus:outline-none focus:ring-2 focus:ring-gray-200 rounded-lg text-sm p-2 inline-flex items-center dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="mobile-menu-2" aria-expanded="false">
-          <span className="sr-only">Open main menu</span>
-          <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
-          <svg className="hidden w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
-        </button>
-      </div>
-      <div className="hidden md:flex justify-between items-center w-full md:w-auto md:order-1" id="mobile-menu-2">
-        <ul className="flex-col md:flex-row flex md:space-x-8 mt-4 md:mt-0 md:text-sm md:font-medium">
-          <li>
-            <a className="bg-blue-700 md:bg-transparent text-white block pl-3 pr-4 py-2 md:text-blue-700 md:p-0 rounded dark:text-white" aria-current="page"><Link to="/">Home</Link></a>
-          </li>
-          <li>
-            <a className="text-gray-700 hover:bg-gray-50 border-b border-gray-100 md:hover:bg-transparent md:border-0 block pl-3 pr-4 py-2 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"><Link to="/add-location">Add Location</Link></a>
-          </li>
-          <li>
-            <a className="text-gray-700 hover:bg-gray-50 border-b border-gray-100 md:hover:bg-transparent md:border-0 block pl-3 pr-4 py-2 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"><Link to="/location-list">All Locations</Link></a>
-          </li>
-          {/* <li>
-            <a href="#" className="text-gray-700 hover:bg-gray-50 border-b border-gray-100 md:hover:bg-transparent md:border-0 block pl-3 pr-4 py-2 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Pricing</a>
-          </li>
-          <li>
-            <a href="#" className="text-gray-700 hover:bg-gray-50 border-b border-gray-100 md:hover:bg-transparent md:border-0 block pl-3 pr-4 py-2 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Contact</a>
-          </li> */}
-        </ul>
-      </div>
-    </div>
-  </nav>
+      
+        <svg
+           xmlns="http://www.w3.org/2000/svg"
+           id="menu-button"
+           class="h-6 w-6 cursor-pointer md:hidden block"
+           fill="none"
+           viewBox="0 0 24 24"
+           stroke="currentColor"
+           onClick={handleClickMenu}
+         >
+           <path
+             stroke-linecap="round"
+             stroke-linejoin="round"
+             stroke-width="2"
+             d="M4 6h16M4 12h16M4 18h16"
+           />
+         </svg>
+      
+      <div class="hidden w-full md:flex md:items-center md:w-auto" id="menu">
+         <ul
+           class="
+             pt-4
+             text-base text-gray-700
+             md:flex
+             md:justify-between 
+             md:pt-0"
+         >
+           <li>
+             <a class="md:p-4 py-2 block hover:text-lime-600 text-2xl" 
+               ><Link to="/">Home</Link></a>
+           </li>
+           <li>
+             <a class="md:p-4 py-2 block hover:text-lime-600 text-2xl" 
+               ><Link to="/location-list">All locations</Link></a>
+           </li>
+           <li>
+             <a class="md:p-4 py-2 block hover:text-lime-600 text-2xl" 
+               ><Link to="/add-location">Add location</Link></a>
+           </li>
+           <li>
+             <a
+               class="md:p-4 py-2 block hover:text-lime-600 text-lime-800 text-2xl"
+               >Sign Up</a>
+           </li>
+         </ul>
+       </div>
+   </nav>
+ </header>
   );
 }
 

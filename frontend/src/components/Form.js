@@ -176,39 +176,6 @@ export default function Form() {
           </div>
         </div>
       </div>
-    // <main id="main">
-    // <section className="inner-page">
-    //   <div className="container">
-    //     <form onSubmit={handleSubmit} className="php-email-form" encType='multipart/form-data'>
-    //       <DisplayMapFC/>
-    //       <div className="form-group mt-3">
-    //         <label htmlFor="locationLatitude">Location Latitude</label>
-    //         <p id="locationLatitude">{coordinates.latitude}</p>
-    //         <label htmlFor="locationLongitude">Location Longitude</label>
-    //         <p id="locationLongitude">{coordinates.longitude}</p>
-    //       </div>
-    //       <div className="form-group mt-3">
-    //         <label htmlFor="locationName">Location Name</label>
-    //         <input type="text" className="form-control" name="title" id="locationName" value={location.title} onChange={handleChange} required/>
-    //       </div>
-    //       <div className="form-group mt-3">
-    //         <label htmlFor="message">Message</label>
-    //         <textarea id="message" className="form-control" name="message" rows="10" value={location.message} onChange={handleChange} required/>
-    //       </div>
-    //       <div className="form-group mt-3">
-    //         <label htmlFor="image">Image</label>
-    //         <input type="file" className="form-control" name="imageData" id="image" accept=".png,.jpg,.jpeg" value={imageUrl.imageData} onChange={handleImageChange} />
-    //       </div>
-    //       <div className="form-group mt-3">
-    //         <p>Tags(Click to add a tag)</p>
-    //         {allTags.map(tag => <p><button type="button" id={tag.id} onClick={handleTagAdd}>{tag.name}</button></p>)}
-    //       </div>
-    //       <div className="text-center">
-    //         <button type="submit">Add Location</button>
-    //       </div>
-    //     </form>
-    //   </div>
-    // </section>
-    // </main>
+    
   );
 }

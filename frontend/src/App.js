@@ -13,11 +13,17 @@ function App() {
 
 
   return (
-      <div className="App">
+      <div className="App 
+      antialiased
+      bg-gradient-to-r
+      from-yellow-200
+      via-lime-200
+      to-green-300
+      ">
           <Router>
               <Navbar/>
               <br/>
-              <div className="main">
+              <div className="main px-4">
               <Routes>
                   <Route exact path='/' element={<Form/>}/>
                   <Route exact path='/add-location' element={<Form/>}/>
