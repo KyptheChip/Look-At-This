@@ -1,32 +1,28 @@
 {
-  "name": "frontend",
+  "name": "my-project",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@craco/craco": "^5.9.0",
-    "@headlessui/react": "^1.4.2",
-    "@heroicons/react": "^1.0.5",
-    "@testing-library/jest-dom": "^5.15.0",
-    "@testing-library/react": "^11.2.7",
-    "@testing-library/user-event": "^12.8.3",
-    "@themesberg/flowbite": "^1.2.0",
+    "@testing-library/jest-dom": "^5.16.1",
+    "@testing-library/react": "^12.1.2",
+    "@testing-library/user-event": "^13.5.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-map-gl": "^6.1.17",
-    "react-router": "^6.0.2",
-    "react-scripts": "^4.0.3",
-    "web-vitals": "^1.1.2"
+    "react-map-gl": "^6.1.18",
+    "react-router": "^6.1.1",
+    "react-router-dom": "^6.1.1",
+    "react-scripts": "5.0.0-next.58",
+    "web-vitals": "^2.1.2"
   },
   "scripts": {
-    "start": "craco start",
-    "build": "craco build",
-    "test": "craco test",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
-      "react-app",
-      "react-app/jest"
+      "react-app"
     ]
   },
   "browserslist": {
@@ -42,9 +38,8 @@
     ]
   },
   "devDependencies": {
-    "autoprefixer": "^9.8.8",
-    "postcss": "^7.0.39",
-    "react-router-dom": "^6.0.2",
-    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.17"
+    "autoprefixer": "^10.4.0",
+    "postcss": "^8.4.5",
+    "tailwindcss": "^3.0.1"
   }
 }

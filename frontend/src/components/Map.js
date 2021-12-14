@@ -13,11 +13,6 @@ export function DisplayMapFC() {
         container: 'map-container'
     });
 
-  // const [dimensions, setDimensions] = React.useState({
-  //   height: window.innerHeight,
-  //   width: window.innerWidth
-  // })
-
   React.useEffect(() => {
     const debouncedHandleResize = debounce(function handleResize() {
       setViewport(

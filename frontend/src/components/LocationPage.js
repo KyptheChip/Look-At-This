@@ -39,7 +39,7 @@ export default function LocationPage() {
   return (
     <section className="inner-page">
       <div className="container">
-          <div key={location.id} className="card mb-3" /*style={{maxWidth: "800px"}}*/>
+          <div key={location.id} className="card mb-3" >
             <div className="row g-0">
               <div className="col-md-4">
                 <img className="img-fluid rounded-start" src={`data:image/jpeg;base64,${location.imageData}`}
