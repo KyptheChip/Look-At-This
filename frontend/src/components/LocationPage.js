@@ -1,9 +1,10 @@
 import React, {useEffect, useState} from "react";
 import {useParams} from "react-router";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {EmbedMap} from "./EmbedMap";
 
 export default function LocationPage() {
+  let navigate = useNavigate()
 
   const {locationId} = useParams();
 
@@ -34,6 +35,7 @@ export default function LocationPage() {
       {
         method: 'DELETE'
       });
+      setTimeout(() => navigate('/location-list'), 500)
   }
 
   return (

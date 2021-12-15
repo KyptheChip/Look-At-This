@@ -5,12 +5,15 @@ export default function LocationsList() {
 
   const [locationList, setLocationList] = useState([]);
 
-  useEffect(() => {
+  useEffect(async () => {
     fetch('http://localhost:8080/location-list')
       .then(response => response.json())
       .then((response) => {
         setLocationList(response)
       })
+    // const response = await fetch('http://localhost:8080/location-list');
+    // const json = await response.json();
+    // setLocationList(json);
   }, []);
 
   const getLocationsByTag = async event => {
@@ -31,7 +34,7 @@ export default function LocationsList() {
 
   return [
     <div className="search-bar-container flex justify-center pb-8">
-      <input className='bg-gray-100 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-3/4 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-500 dark:text-gray-500 dark:focus:ring-blue-500 dark:focus:border-blue-500' type="text" placeholder="Search for a location" onChange={getLocations}/>
+      <input className='bg-gray-100 border border-lime-600 text-gray-900 sm:text-sm rounded-lg focus:ring-lime-800 focus:border-lime-800 block w-3/4 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-500 dark:text-gray-500 dark:focus:ring-blue-500 dark:focus:border-blue-500' type="text" placeholder="Search for a location" onChange={getLocations}/>
     </div>,
     <section className="inner-page flex justify-center">
 

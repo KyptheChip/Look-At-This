@@ -23,7 +23,7 @@ function App() {
           <Router>
               <Navbar/>
               <br/>
-              <div className="main px-4">
+              <div>
               <Routes>
                   <Route exact path='/' element={<Form/>}/>
                   <Route exact path='/add-location' element={<Form/>}/>

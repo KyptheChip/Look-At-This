@@ -8,7 +8,7 @@ export function DisplayMapFC() {
         latitude: 44.4361414,
         longitude: 26.1027202,
         width: "100%",
-        height: "500px",
+        height: "700px",
         zoom: 10,
         container: 'map-container'
     });
