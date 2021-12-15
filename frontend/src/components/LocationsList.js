@@ -29,12 +29,13 @@ export default function LocationsList() {
           })
   }
 
-  return (
-    <section className="inner-page">
-        <div className="search-bar-container">
-            <input className='search-bar' type="text" placeholder="Search for a location" onChange={getLocations}/>
-        </div>
-      <div className="container columns-2">
+  return [
+    <div className="search-bar-container flex justify-center pb-8">
+      <input className='bg-gray-100 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-3/4 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-500 dark:text-gray-500 dark:focus:ring-blue-500 dark:focus:border-blue-500' type="text" placeholder="Search for a location" onChange={getLocations}/>
+    </div>,
+    <section className="inner-page flex justify-center">
+
+      <div className="container columns-2 space-y-12">
         {locationList.map((location) => (
           <div class="max-w-2xl mx-auto overflow-hidden bg-white rounded-lg shadow-md dark:bg-gray-800">
           <img class="object-cover w-full h-64" src={`data:image/jpeg;base64,${location.imageData}`} alt="Article"/>
@@ -79,5 +80,5 @@ export default function LocationsList() {
         ))}
       </div>
    </section>
-  );
+  ];
 }
