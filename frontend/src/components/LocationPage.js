@@ -51,8 +51,8 @@ export default function LocationPage() {
                 <p>{location.tags.map(tag => <span key={tag.id} id={tag.id}>#{tag.name} </span>)}</p>
               </div>
               <div className="space-y-2">
-                <p><button className='rounded-full bg-green-600 hover:bg-cyan-500 w-1/5' id={location.id} onClick={deleteLocation}>Delete location</button></p>
-                <p><button className='rounded-full bg-green-600 hover:bg-cyan-500 w-1/5' id={location.id}><Link className='getstarted link' to={'/edit-location/' + locationId}>Update location</Link></button></p>
+                <p><button className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-lime-600 hover:bg-lime-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-lime-800" id={location.id} onClick={deleteLocation}>Delete location</button></p>
+                <p><button className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-lime-600 hover:bg-lime-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-lime-800" id={location.id}><Link className='getstarted link' to={'/edit-location/' + locationId}>Update location</Link></button></p>
               </div>
             </div>
             <div className="card mb-3 space-y-8 mx-auto overflow-hidden bg-white rounded-lg shadow-md dark:bg-gray-800 h-full">
