@@ -18,7 +18,7 @@ export default function Footer() {
               </div>
               <div className="px-5 py-2">
                 <a className="text-base leading-6 text-gray-500 hover:text-lime-600">
-                  <Link to="/add-location">Add locations</Link>
+                  <Link to="/add-location">Add location</Link>
                 </a>
               </div>
               <div className="px-5 py-2">
