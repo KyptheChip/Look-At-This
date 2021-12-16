@@ -41,8 +41,8 @@ export default function LocationPage() {
   return (
     <section className="inner-page flex justify-center">
       <div className="container">
-          <div key={location.id} className="card mb-3 space-y-8 max-w-5xl mx-auto overflow-hidden bg-white rounded-lg shadow-md dark:bg-gray-800">
-            <img className="img-fluid rounded-start" src={`data:image/jpeg;base64,${location.imageData}`}
+          <div key={location.id} className="card mb-3 space-y-8 max-w-5xl mx-auto overflow-hidden bg-white rounded-lg shadow-md dark:bg-gray-800  border border-lime-600">
+            <img className="img-fluid rounded-start w-full" src={`data:image/jpeg;base64,${location.imageData}`}
                  alt=""/>
             <div className="card-body space-y-8">
               <div>

@@ -121,37 +121,6 @@ export default function UpdateForm() {
   }
 
   return (
-    // <main id="main">
-    //   <section className="inner-page">
-    //     <div className="container">
-    //       <form onSubmit={handleSubmit} className="php-email-form" encType='multipart/form-data'>
-    //         <DisplayMapFC/>
-    //         <div className="form-group mt-3">
-    //           <label htmlFor="locationLatitude">Location Latitude</label>
-    //           <p id="locationLatitude">{coordinates.latitude}</p>
-    //           <label htmlFor="locationLongitude">Location Longitude</label>
-    //           <p id="locationLongitude">{coordinates.longitude}</p>
-    //         </div>
-    //         <div className="form-group mt-3">
-    //           <label htmlFor="locationName">Location Name</label>
-    //           <input type="text" className="form-control" name="title" id="locationName" value={location.title} onChange={handleChange} required/>
-    //         </div>
-    //         <div className="form-group mt-3">
-    //           <label htmlFor="message">Message</label>
-    //           <textarea id="message" className="form-control" name="message" rows="10" value={location.message} onChange={handleChange} required/>
-    //         </div>
-    //         <div className="form-group mt-3">
-    //           <p><label htmlFor="image">Image</label></p>
-    //           <img style={{maxWidth: "300px"}} className="img-fluid rounded-start" src={`data:image/jpeg;base64,${imageUrl}`} alt='' />
-    //           <input type="file" className="form-control" name="imageData" id="image" accept=".png,.jpg,.jpeg" value={imageUrl.imageData} onChange={handleImageChange} />
-    //         </div>
-    //         <div className="text-center">
-    //           <button type="submit">Update Location</button>
-    //         </div>
-    //       </form>
-    //     </div>
-    //   </section>
-    // </main>
     <div>
       <div className="md:grid md:grid-cols-3 md:gap-6" id="map-container">
         <div className="md:col-span-1">
@@ -159,7 +128,7 @@ export default function UpdateForm() {
             <DisplayMapFC/>
           </div>
         </div>
-        <div className="mt-5 md:mt-0 md:col-span-2">
+        <div className="mt-5 md:mt-0 md:col-span-2 border border-lime-600">
           <form action="#" onSubmit={handleSubmit}>
             <div className="shadow sm:rounded-md sm:overflow-hidden">
               <div className="px-4 py-5 bg-white space-y-6 sm:p-6">
@@ -215,11 +184,11 @@ export default function UpdateForm() {
                   {allTags.map((tag) => 
                       {
                         if(!tags.includes(tag)){
-                        console.log("da")
-                        return <span id={tag.id} class="inline-flex items-center justify-center px-5 py-2 text-l font-bold leading-none text-black rounded-full border border-lime-600" onClick={handleTagClick}>{tag.name}</span>
-                      }else {
-                        console.log("nu")
-                        return <span id={tag.id} class="inline-flex items-center justify-center px-5 py-2 text-l font-bold leading-none text-white rounded-full border border-lime-600 bg-lime-600" onClick={handleTagClick}>{tag.name}</span>
+                        // console.log("da")
+                          return <span id={tag.id} className="inline-flex items-center justify-center px-5 py-2 text-l font-bold leading-none text-black rounded-full border border-lime-600" onClick={handleTagClick}>{tag.name}</span>
+                      } else {
+                        // console.log("nu")
+                          return <span id={tag.id} className="inline-flex items-center justify-center px-5 py-2 text-l font-bold leading-none text-white rounded-full border border-lime-600 bg-lime-600" onClick={handleTagClick}>{tag.name}</span>
                       }
                       })}
                   </div>

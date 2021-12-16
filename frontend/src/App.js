@@ -7,25 +7,20 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import LocationPage from "./components/LocationPage";
 import UpdateForm from "./components/UpdateForm";
+import LandingPage from "./components/LandingPage";
 
 
 function App() {
 
 
   return (
-      <div className="App 
-      antialiased
-      bg-gradient-to-r
-      from-yellow-200
-      via-lime-200
-      to-green-300
-      ">
+      <div className="App">
           <Router>
               <Navbar/>
               <br/>
               <div>
               <Routes>
-                  <Route exact path='/' element={<Form/>}/>
+                  <Route exact path='/' element={<LandingPage className="bg-gradient-to-r from-yellow-100 to-lime-100"/>}/>
                   <Route exact path='/add-location' element={<Form/>}/>
                   <Route exact path='/location-list' element={<LocationsList/>}/>
                   <Route exact path='/location/:locationId' element={<LocationPage/>}/>

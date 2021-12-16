@@ -4,14 +4,15 @@ import {Link} from "react-router-dom";
 
 export default function Navbar() {
 
-  const handleClickMenu = (event) => {
+  const handleClickMenu = () => {
     document.querySelector('#menu').classList.toggle('hidden');
   }
 
   return (
-    <header className="sticky top-0 z-50">
+    <header className="sticky top-0 z-50 divide-y
+    divide-solid divide-lime-200">
     <nav
-       class="
+       className="
          flex flex-wrap
          items-center
          justify-between
@@ -21,6 +22,7 @@ export default function Navbar() {
          px-4
          text-lg text-gray-700
          bg-white
+         
        "
      >
       <div>

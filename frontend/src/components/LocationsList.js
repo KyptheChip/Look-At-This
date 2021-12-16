@@ -37,9 +37,9 @@ export default function LocationsList() {
       <input className='bg-gray-100 border border-lime-600 text-gray-900 sm:text-sm rounded-lg focus:ring-lime-800 focus:border-lime-800 block w-3/4 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-500 dark:text-gray-500 dark:focus:ring-blue-500 dark:focus:border-blue-500' type="text" placeholder="Search for a location" onChange={getLocations}/>
     </div>,
     <section className="container mx-auto px-4">
-      <div className="container columns-2 space-y-12">
+      <div className="container columns-2xl space-y-12">
         {locationList.map((location) => (  
-          <div class="max-w-2xl mx-auto overflow-hidden  bg-white rounded-lg shadow-md dark:bg-gray-800">
+          <div class="max-w-2xl mx-auto overflow-hidden  bg-white rounded-lg shadow-md dark:bg-gray-800 border border-lime-600">
             <img class="object-cover w-full h-64" src={`data:image/jpeg;base64,${location.imageData}`} alt="Article"/>
             <div class="p-6">
               <div>
