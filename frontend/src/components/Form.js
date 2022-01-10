@@ -1,13 +1,15 @@
 import React, {useEffect, useState} from "react";
+import {useNavigate} from 'react-router-dom'
 import {DisplayMapFC} from "./Map"
-import {Link} from "react-router-dom";
 
 export default function Form() {
+  let navigate = useNavigate()
+
   useEffect(() => {
     fetch("http://localhost:8080/tag-list")
       .then(response => response.json())
       .then(data => setAllTags(data))
-  });
+  }, []);
 
   const [location, setLocation] = useState({
     id: 0,
@@ -47,13 +49,31 @@ export default function Form() {
     })
   }
 
-  const handleTagAdd = (event) => {
-    setTags(
-      [...tags, {
-        id: event.target.id,
-        name: event.target.innerText
-      }]
-    );
+  const handleTagClick = (event) => {
+    
+    let tag = {
+      id: event.target.id,
+      name: event.target.innerText
+    }
+    
+    event.target.classList.toggle("bg-lime-600")
+    if(event.target.classList.contains("text-black")) {
+      event.target.classList.replace("text-black", "text-white")
+
+      setTags(
+        [...tags, {
+          id: event.target.id,
+          name: event.target.innerText
+        }]
+      );
+
+    } else {
+      event.target.classList.replace("text-white", "text-black")
+
+      setTags(tags.filter(tag => tag.name !== event.target.innerText))
+    }
+    console.log(tag)
+    console.log(tags);
   }
 
   const handleSubmit = event => {
@@ -64,7 +84,6 @@ export default function Form() {
       ...coordinates,
       tags : tags
     }
-    console.log(locationToSend);
     fetch(
       "http://0.0.0.0:8080/add-location",
       {
@@ -76,44 +95,89 @@ export default function Form() {
       })
       .then(response => response.json())
       .catch(function() {});
+      setTimeout(() => navigate('/location-list'), 500)
+      
   }
 
   return (
-    <main id="main">
-    <section className="inner-page">
-      <div className="container">
-        <form onSubmit={handleSubmit} className="php-email-form" encType='multipart/form-data'>
-          <DisplayMapFC/>
-          <div className="form-group mt-3">
-            <label htmlFor="locationLatitude">Location Latitude</label>
-            {/*<input type="number" className="form-control" name="location_lat" id="locationLatitude" step="any" value={coordinates.latitude} required/>*/}
-            <p id="locationLatitude">{coordinates.latitude}</p>
-            <label htmlFor="locationLongitude">Location Longitude</label>
-            {/*<input type="number" className="form-control" name="location_lng" id="locationLongitude" step="any" value={coordinates.longitude} required/>*/}
-            <p id="locationLongitude">{coordinates.longitude}</p>
+    <div>
+      <div className="md:grid md:grid-cols-3 md:gap-6" id="map-container">
+        <div className="md:col-span-1">
+          <div className="px-4 sm:px-1">
+            <DisplayMapFC/>
           </div>
-          <div className="form-group mt-3">
-            <label htmlFor="locationName">Location Name</label>
-            <input type="text" className="form-control" name="title" id="locationName" value={location.title} onChange={handleChange} required/>
+        </div>
+        <div className="mt-5 md:mt-0 md:col-span-2 border border-lime-600">
+          <form action="#" onSubmit={handleSubmit}>
+            <div className="shadow sm:rounded-md sm:overflow-hidden">
+              <div className="px-4 py-5 bg-white space-y-6 sm:p-6">
+                <div className="grid grid-cols-3 gap-3">
+                  <div className="col-span-3 sm:col-span-2">
+                    <label htmlFor="company-website" className="block text-xl font-medium text-gray-700 ">
+                      Title
+                    </label>
+                    <div className="mt-1 flex rounded-md shadow-sm">
+                      <input
+                        type="text"
+                        name="title"
+                        id="locationName" value={location.title} onChange={handleChange} required
+                        className="bg-gray-100 border border-lime-800 text-gray-900 sm:text-xs rounded-lg focus:ring-lime-800 focus:border-lime-800 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        placeholder="Give your location a title"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <label htmlFor="about" className="block text-xl font-medium text-gray-700">
+                    Description
+                  </label>
+                  <div className="mt-1">
+                    <textarea
+                      value={location.message} onChange={handleChange} required
+                      id="message" 
+                      name="message"
+                      rows={3}
+                      className="bg-gray-100 border border-lime-800 text-gray-900 sm:text-sm rounded-lg focus:ring-lime-800 focus:border-lime-800 block w-full p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                      placeholder="Enter your description here"
+                    />
+                  </div>
+                </div>
+                <div className="col-span-6 sm:col-span-3">
+                  <label for="first_name" class="block text-xl font-medium text-gray-700">Location latitude</label>
+                  <p className="bg-gray-100 border border-lime-800 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 cursor-not-allowed dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-500 dark:text-gray-500 dark:focus:ring-blue-500 dark:focus:border-blue-500" id="locationLatitude">{coordinates.latitude}</p>
+                </div>
+                <div className="col-span-6 sm:col-span-3">
+                  <label for="last_name" class="block text-xl font-medium text-gray-700">Location longitude</label>
+                  <p className="bg-gray-100 border border-lime-800 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 cursor-not-allowed dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-500 dark:text-gray-500 dark:focus:ring-blue-500 dark:focus:border-blue-500" id="locationLongitude">{coordinates.longitude}</p>
+                </div>
+                <div>
+                  <label for="formFile" className="form-label block text-xl font-medium text-gray-700">Location photo</label>
+                  <input type="file" name="imageData" id="formFile" accept=".png,.jpg,.jpeg" value={imageUrl.imageData} onChange={handleImageChange} required
+                    className="border-lime-800 focus:ring-lime-800 block w-full overflow-hidden cursor-pointer border text-gray-900 bg-gray-100 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:border-transparent p-2.5"/>
+                </div>
+                <div className="col-span-6 sm:col-span-3 h-3/5 w-3/5">
+                  <img src={`data:image/jpeg;base64,${imageUrl}`} className="img-responsive " alt='' />
+                </div>
+                <div className="container h-20 w-full  space-x-4">
+                  <label for="formFile" className="form-label block text-xl font-medium text-gray-700">Location tags</label>
+                  {allTags.map((tag) => 
+                    <span id={tag.id} class="inline-flex items-center justify-center px-5 py-2 text-l font-bold leading-none text-black rounded-full border border-gray-300" onClick={handleTagClick}>{tag.name}</span>
+                  )}
+                  </div>
+              </div>
+                <div className="px-4 py-3 bg-gray-100 text-center sm:px-6">
+                  <button
+                    type="submit"
+                    className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-lime-600 hover:bg-lime-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-lime-800"
+                  >
+                    Save location
+                </button>
+              </div>
+            </div>
+          </form>
           </div>
-          <div className="form-group mt-3">
-            <label htmlFor="message">Message</label>
-            <textarea id="message" className="form-control" name="message" rows="10" value={location.message} onChange={handleChange} required/>
-          </div>
-          <div className="form-group mt-3">
-            <label htmlFor="image">Image</label>
-            <input type="file" className="form-control" name="imageData" id="image" accept=".png,.jpg,.jpeg" value={imageUrl.imageData} onChange={handleImageChange} />
-          </div>
-          <div className="form-group mt-3">
-            <p>Tags(Click to add a tag)</p>
-            {allTags.map(tag => <p><button type="button" id={tag.id} onClick={handleTagAdd}>{tag.name}</button></p>)}
-          </div>
-          <div className="text-center">
-            <button type="submit">Add Location</button>
-          </div>
-        </form>
+        </div>
       </div>
-    </section>
-    </main>
+    
   );
 }

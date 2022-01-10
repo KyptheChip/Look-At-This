@@ -9,7 +9,7 @@ export function EmbedMap(props) {
         latitude: props.location.latitude,
         longitude: props.location.longitude,
         width: "100%",
-        height: "700px",
+        height: "400px",
         zoom: 5
     });
 
