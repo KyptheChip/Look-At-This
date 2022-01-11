@@ -10,7 +10,7 @@ export default function UpdateForm() {
   const {locationId} = useParams();
 
   useEffect(() => {
-    fetch('http://localhost:8080/location/' + locationId,
+    fetch('http://localhost:8080/location/get/' + locationId,
       {headers: {"Content-Type": "application/json"}})
       .then(response => response.json())
       .then((response) => {
@@ -25,6 +25,7 @@ export default function UpdateForm() {
         })
         setImageUrl(response.imageData)
         setTags(response.tags)
+        console.log(response.tags)
       })
   }, []);
 
@@ -117,7 +118,6 @@ export default function UpdateForm() {
       .then(response => response.json())
       .catch(function() {});
       setTimeout(() => navigate('/location-list'), 500)
-
   }
 
   return (
@@ -181,7 +181,7 @@ export default function UpdateForm() {
                 </div>
                 <div className="container h-20 w-full  space-x-4">
                   <label for="formFile" className="form-label block text-xl font-medium text-gray-700">Location tags</label>
-                  {allTags.map((tag) => 
+                  {allTags.map((tag) =>
                       {
                         if(!tags.includes(tag)){
                         // console.log("da")

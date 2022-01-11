@@ -29,7 +29,7 @@ public class LocationController {
         locationService.addLocation(location);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/get/{id}")
     public Location getLocationById(@PathVariable("id") Long id) {
         return locationService.getLocationById(id);
     }
