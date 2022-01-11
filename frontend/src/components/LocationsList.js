@@ -6,7 +6,7 @@ export default function LocationsList() {
   const [locationList, setLocationList] = useState([]);
 
   useEffect(async () => {
-    fetch('http://localhost:8080/location-list')
+    fetch('http://localhost:8080/location/list')
       .then(response => response.json())
       .then((response) => {
         setLocationList(response)
@@ -17,7 +17,7 @@ export default function LocationsList() {
   }, []);
 
   const getLocationsByTag = async event => {
-    fetch('http://localhost:8080/locations-by-tag/' + event.target.id)
+    fetch('http://localhost:8080/locations/tag/' + event.target.id)
       .then(response => response.json())
       .then((response) => {
         setLocationList(response)
@@ -25,7 +25,7 @@ export default function LocationsList() {
   }
 
   const getLocations = async event => {
-      fetch('http://localhost:8080/location-list/' + event.target.value)
+      fetch('http://localhost:8080/location/search/' + event.target.value)
           .then(response => response.json())
           .then((response) => {
               setLocationList(response)

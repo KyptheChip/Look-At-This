@@ -1,6 +1,6 @@
 package com.codecool.lookatthis.service;
 
-import com.codecool.lookatthis.models.Location;
+import com.codecool.lookatthis.entity.Location;
 import com.codecool.lookatthis.repository.LocationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -48,13 +48,13 @@ public class LocationService {
         locationRepository.deleteById(id);
     }
 
-    public List<Location> getAllOrderedByTitleAsc() {
-        return locationRepository.findAllByOrderByTitleAsc();
-    }
-
-    public List<Location> getAllOrderedByTitleDesc() {
-        return locationRepository.findAllByOrderByTitleDesc();
-    }
+//    public List<Location> getAllOrderedByTitleAsc() {
+//        return locationRepository.findAllByOrderByTitleAsc();
+//    }
+//
+//    public List<Location> getAllOrderedByTitleDesc() {
+//        return locationRepository.findAllByOrderByTitleDesc();
+//    }
 
     public List<Location> getAllBySearch(String text) {
         List<Location> locationsByTitle = locationRepository.findAllByTitleContainingIgnoreCase(text);

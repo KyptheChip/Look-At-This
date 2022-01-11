@@ -31,7 +31,7 @@ export default function LocationPage() {
 
   const deleteLocation = (event) => {
     fetch(
-      'http://localhost:8080/delete-location/' + event.target.id,
+      'http://localhost:8080/location/delete/' + event.target.id,
       {
         method: 'DELETE'
       });

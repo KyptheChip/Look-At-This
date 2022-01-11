@@ -9,7 +9,7 @@ export default function LandingPageMap() {
     const [locationList, setLocationList] = useState([]);
 
     useEffect(async () => {
-        fetch('http://localhost:8080/location-list')
+        fetch('http://localhost:8080/location/list')
         .then(response => response.json())
         .then((response) => {
             setLocationList(response)

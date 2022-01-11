@@ -1,6 +1,6 @@
 package com.codecool.lookatthis.repository;
 
-import com.codecool.lookatthis.models.Tag;
+import com.codecool.lookatthis.entity.Tag;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

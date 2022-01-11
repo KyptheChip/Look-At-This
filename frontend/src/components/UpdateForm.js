@@ -29,7 +29,7 @@ export default function UpdateForm() {
   }, []);
 
   useEffect(() => {
-    fetch("http://localhost:8080/tag-list")
+    fetch("http://localhost:8080/tag/list")
       .then(response => response.json())
       .then(data => setAllTags(data))
   }, []);
@@ -106,7 +106,7 @@ export default function UpdateForm() {
     }
     console.log(locationToSend);
     fetch(
-      "http://0.0.0.0:8080/edit-location",
+      "http://0.0.0.0:8080/location/edit",
       {
         method : "PUT",
         headers : {

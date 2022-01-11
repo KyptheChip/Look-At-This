@@ -1,7 +1,6 @@
 package com.codecool.lookatthis.repository;
 
-import com.codecool.lookatthis.models.Location;
-import com.codecool.lookatthis.models.Tag;
+import com.codecool.lookatthis.entity.Location;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

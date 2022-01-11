@@ -6,7 +6,7 @@ export default function Form() {
   let navigate = useNavigate()
 
   useEffect(() => {
-    fetch("http://localhost:8080/tag-list")
+    fetch("http://localhost:8080/tag/list")
       .then(response => response.json())
       .then(data => setAllTags(data))
   }, []);
@@ -85,7 +85,7 @@ export default function Form() {
       tags : tags
     }
     fetch(
-      "http://0.0.0.0:8080/add-location",
+      "http://0.0.0.0:8080/location/add",
       {
         method : "POST",
         headers : {

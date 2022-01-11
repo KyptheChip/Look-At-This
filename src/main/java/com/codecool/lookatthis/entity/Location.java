@@ -1,4 +1,4 @@
-package com.codecool.lookatthis.models;
+package com.codecool.lookatthis.entity;
 
 import lombok.*;
 

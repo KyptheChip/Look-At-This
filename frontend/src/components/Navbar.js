@@ -1,11 +1,21 @@
 import React from "react";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 
 
 export default function Navbar() {
 
+  let navigate = useNavigate();
+
   const handleClickMenu = () => {
     document.querySelector('#menu').classList.toggle('hidden');
+  }
+
+  const handleClick = () => {
+    if (localStorage.getItem("user") === null) {
+      navigate("/login");
+    } else {
+      navigate("/add-location");
+    }
   }
 
   return (
@@ -67,8 +77,7 @@ export default function Navbar() {
                ><Link to="/location-list">All locations</Link></a>
            </li>
            <li>
-             <a class="md:p-4 py-2 block hover:text-lime-600 text-2xl" 
-               ><Link to="/add-location">Add location</Link></a>
+             <button onClick={handleClick} class="md:p-4 py-2 block hover:text-lime-600 text-2xl">Add location</button>
            </li>
            <li>
              <a
