@@ -50,6 +50,10 @@ export default function LocationPage() {
                 <p className="card-text">{location.message}</p>
                 <p>{location.tags.map(tag => <span key={tag.id} id={tag.id}>#{tag.name} </span>)}</p>
               </div>
+              <div>
+                <h3 className="class=block mt-2 text-2xl font-semibold text-gray-800 dark:text-white">Comments</h3>
+                {/*{location.comments.map(comment => <p>{comment}</p>)}*/}
+              </div>
               <div className="space-y-2">
                 <p><button className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-lime-600 hover:bg-lime-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-lime-800"
                            id={location.id} onClick={deleteLocation}>Delete location</button></p>

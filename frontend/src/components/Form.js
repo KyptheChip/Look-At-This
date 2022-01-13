@@ -50,12 +50,12 @@ export default function Form() {
   }
 
   const handleTagClick = (event) => {
-    
+
     let tag = {
       id: event.target.id,
       name: event.target.innerText
     }
-    
+
     event.target.classList.toggle("bg-lime-600")
     if(event.target.classList.contains("text-black")) {
       event.target.classList.replace("text-black", "text-white")
@@ -95,8 +95,8 @@ export default function Form() {
       })
       .then(response => response.json())
       .catch(function() {});
-      setTimeout(() => navigate('/location-list'), 500)
-      
+    setTimeout(() => navigate('/location-list'), 500)
+
   }
 
   return (

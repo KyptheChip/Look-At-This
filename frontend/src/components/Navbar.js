@@ -1,10 +1,15 @@
-import React from "react";
+import React, {useState} from "react";
 import {Link, useNavigate} from "react-router-dom";
+import ModalWrapper from "./ModalWrapper";
+import LoginModal from "./LoginModal";
+import RegisterModal from "./RegisterModal";
 
 
 export default function Navbar() {
 
   let navigate = useNavigate();
+
+  const [loggedIn, setLoggedIn] = useState(localStorage.getItem("user") === null);
 
   const handleClickMenu = () => {
     document.querySelector('#menu').classList.toggle('hidden');
@@ -76,14 +81,35 @@ export default function Navbar() {
              <a class="md:p-4 py-2 block hover:text-lime-600 text-2xl" 
                ><Link to="/location-list">All locations</Link></a>
            </li>
-           <li>
-             <button onClick={handleClick} class="md:p-4 py-2 block hover:text-lime-600 text-2xl">Add location</button>
-           </li>
-           <li>
-             <a
-               class="md:p-4 py-2 block hover:text-lime-600 text-lime-800 text-2xl"
-               >Sign Up</a>
-           </li>
+           {!loggedIn ?
+             (<>
+               <li>
+               <button onClick={handleClick} class="md:p-4 py-2 block hover:text-lime-600 text-2xl">Add location
+               </button>
+             </li>
+             <li>
+               <button className="md:p-4 py-2 block hover:text-lime-600 text-2xl" onClick={() => {
+                 localStorage.removeItem("user")
+                 window.location.reload()
+               }}>Log Out
+               </button>
+             </li>
+               </>
+             )
+             : (<>
+               <li>
+                  <LoginModal/>
+                </li>
+                 <li>
+                  <RegisterModal/>
+                 </li>
+             </>)
+           }
+           {/*<li>*/}
+           {/*  <a*/}
+           {/*    class="md:p-4 py-2 block hover:text-lime-600 text-lime-800 text-2xl"*/}
+           {/*    >Sign Up</a>*/}
+           {/*</li>*/}
          </ul>
        </div>
    </nav>
