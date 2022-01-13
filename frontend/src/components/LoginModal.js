@@ -30,13 +30,23 @@ export default function LoginModal(props) {
     )
       .then(response => response.json())
       .then(response => {
+        if(response.status === 200) {
         localStorage.setItem("userId", response.userId)
+        localStorage.setItem("username", response.username)
         localStorage.setItem("token", response.token)
-        console.log(response.userId)
+        setShowLoginModal(false)
+        window.location.reload()}
+        else {
+          setUser({
+            email: "",
+            password: ""
+          })
+          alert("Invalid credentials!")
+        }
+        // console.log(response.userId)
       })
       .then(() => {
-        setShowLoginModal(false)
-        window.location.reload()
+
       })
       .catch(function () {})
   }
