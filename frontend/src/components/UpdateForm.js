@@ -9,6 +9,23 @@ export default function UpdateForm() {
 
   const {locationId} = useParams();
 
+  const [allTags, setAllTags] = useState([])
+
+  const [locationTags, setLocationTags] = useState([]);
+
+  const [location, setLocation] = useState({
+    id: 0,
+    title: "",
+    message: "",
+  });
+
+  const [coordinates, setCoordinates] = useState({
+    longitude: 0,
+    latitude: 0
+  })
+
+  const [imageUrl, setImageUrl] = useState("")
+
   useEffect(() => {
     fetch('http://localhost:8080/location/get/' + locationId,
       {headers: {"Content-Type": "application/json"}})
@@ -24,8 +41,8 @@ export default function UpdateForm() {
           latitude: response.latitude
         })
         setImageUrl(response.imageData)
-        setTags(response.tags)
-        console.log(response.tags)
+        setLocationTags(response.tags/*[{"id": 1, "name": "test"}]*/)
+        console.log(locationTags)
       })
   }, []);
 
@@ -34,23 +51,6 @@ export default function UpdateForm() {
       .then(response => response.json())
       .then(data => setAllTags(data))
   }, []);
-
-  const [allTags, setAllTags] = useState([])
-
-  const [tags, setTags] = useState([]);
-
-  const [location, setLocation] = useState({
-    id: 0,
-    title: "",
-    message: "",
-  });
-
-  const [coordinates, setCoordinates] = useState({
-    longitude: 0,
-    latitude: 0
-  })
-
-  const [imageUrl, setImageUrl] = useState("")
 
 
   const handleChange = event => {
@@ -81,8 +81,8 @@ export default function UpdateForm() {
     if(event.target.classList.contains("text-black")) {
       event.target.classList.replace("text-black", "text-white")
 
-      setTags(
-        [...tags, {
+      setLocationTags(
+        [...locationTags, {
           id: parseInt(event.target.id),
           name: event.target.innerText
         }]
@@ -91,10 +91,10 @@ export default function UpdateForm() {
     } else {
       event.target.classList.replace("text-white", "text-black")
 
-      setTags(tags.filter(tag => tag.name !== event.target.innerText))
+      setLocationTags(locationTags.filter(tag => tag.name !== event.target.innerText))
     }
-    console.log(allTags)
-    console.log(tags);
+    // console.log(allTags)
+    // console.log(tags);
   }
 
   const handleSubmit = event => {
@@ -103,7 +103,8 @@ export default function UpdateForm() {
       ...location,
       imageData: imageUrl,
       ...coordinates,
-      tags: tags
+      tags: locationTags,
+      username: localStorage.getItem("username")
     }
     console.log(locationToSend);
     fetch(
@@ -111,6 +112,7 @@ export default function UpdateForm() {
       {
         method : "PUT",
         headers : {
+          'Authorization': 'Bearer ' + localStorage.getItem("token"),
           "Content-Type" : "application/json"
         },
         body : JSON.stringify(locationToSend)
@@ -183,7 +185,7 @@ export default function UpdateForm() {
                   <label for="formFile" className="form-label block text-xl font-medium text-gray-700">Location tags</label>
                   {allTags.map((tag) =>
                       {
-                        if(!tags.includes(tag)){
+                        if(!locationTags.includes(tag)){
                         // console.log("da")
                           return <span id={tag.id} className="inline-flex items-center justify-center px-5 py-2 text-l font-bold leading-none text-black rounded-full border border-lime-600" onClick={handleTagClick}>{tag.name}</span>
                       } else {

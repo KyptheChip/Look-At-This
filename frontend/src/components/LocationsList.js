@@ -52,9 +52,9 @@ export default function LocationsList() {
                   <div class="flex items-center">
                       <div class="flex items-center">
                           <img class="object-cover h-10 rounded-full" src="https://img.icons8.com/small/50/000000/user-male-circle.png" alt="Avatar"/>
-                          <a href="#" class="mx-2 font-semibold text-gray-700 dark:text-gray-200">User Name</a>
+                          <a href="#" class="mx-2 font-semibold text-gray-700 dark:text-gray-200">{location.username}</a>
                       </div>
-                      <span class="mx-1 text-xs text-gray-600 dark:text-gray-300">Submission time</span>
+                      {/*<span class="mx-1 text-xs text-gray-600 dark:text-gray-300">Submission time</span>*/}
                   </div>
               </div>
             </div>

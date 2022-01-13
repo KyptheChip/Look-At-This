@@ -82,13 +82,15 @@ export default function Form() {
       ...location,
       imageData: imageUrl,
       ...coordinates,
-      tags : tags
+      tags : tags,
+      username: localStorage.getItem("username")
     }
     fetch(
       "http://0.0.0.0:8080/location/add",
       {
         method : "POST",
         headers : {
+          'Authorization': 'Bearer ' + localStorage.getItem("token"),
           "Content-Type" : "application/json"
         },
         body : JSON.stringify(locationToSend)
