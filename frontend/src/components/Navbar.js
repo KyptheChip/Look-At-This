@@ -91,8 +91,8 @@ export default function Navbar() {
                <button className="md:p-4 py-2 block hover:text-lime-600 text-2xl" onClick={() => {
                  localStorage.removeItem("userId")
                  localStorage.removeItem("token")
-                   localStorage.removeItem("username")
-                   localStorage.removeItem("status")
+                 localStorage.removeItem("username")
+                 localStorage.removeItem("status")
                  window.location.reload()
                }}>Log Out
                </button>

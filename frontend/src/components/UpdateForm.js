@@ -41,8 +41,8 @@ export default function UpdateForm() {
           latitude: response.latitude
         })
         setImageUrl(response.imageData)
-        setLocationTags(response.tags/*[{"id": 1, "name": "test"}]*/)
-        console.log(locationTags)
+        setLocationTags(response.tags)
+        console.log(location)
       })
   }, []);
 
@@ -94,7 +94,7 @@ export default function UpdateForm() {
       setLocationTags(locationTags.filter(tag => tag.name !== event.target.innerText))
     }
     // console.log(allTags)
-    // console.log(tags);
+    console.log(locationTags);
   }
 
   const handleSubmit = event => {
@@ -106,7 +106,7 @@ export default function UpdateForm() {
       tags: locationTags,
       username: localStorage.getItem("username")
     }
-    console.log(locationToSend);
+    // console.log(locationToSend);
     fetch(
       "http://0.0.0.0:8080/location/edit",
       {
@@ -134,12 +134,12 @@ export default function UpdateForm() {
           <form action="#" onSubmit={handleSubmit}>
             <div className="shadow sm:rounded-md sm:overflow-hidden">
               <div className="px-4 py-5 bg-white space-y-6 sm:p-6">
-                <div className="grid grid-cols-3 gap-3">
+                <div>
                   <div className="col-span-3 sm:col-span-2">
                     <label htmlFor="company-website" className="block text-xl font-medium text-gray-700 ">
                       Title
                     </label>
-                    <div className="mt-1 flex rounded-md shadow-sm">
+                    <div className="mt-1">
                       <input
                         type="text"
                         name="title"
@@ -183,18 +183,19 @@ export default function UpdateForm() {
                 </div>
                 <div className="container h-20 w-full  space-x-4">
                   <label for="formFile" className="form-label block text-xl font-medium text-gray-700">Location tags</label>
+                  <br/>
                   {allTags.map((tag) =>
-                      {
-                        if(!locationTags.includes(tag)){
+                        locationTags.includes(tag) ?
                         // console.log("da")
-                          return <span id={tag.id} className="inline-flex items-center justify-center px-5 py-2 text-l font-bold leading-none text-black rounded-full border border-lime-600" onClick={handleTagClick}>{tag.name}</span>
-                      } else {
+                          (<span key={tag.id} id={tag.id} className="inline-flex items-center justify-center px-5 py-2 text-l font-bold leading-none text-black rounded-full border border-lime-600" onClick={handleTagClick}>{tag.name}</span>)
+                      :
                         // console.log("nu")
-                          return <span id={tag.id} className="inline-flex items-center justify-center px-5 py-2 text-l font-bold leading-none text-white rounded-full border border-lime-600 bg-lime-600" onClick={handleTagClick}>{tag.name}</span>
-                      }
-                      })}
+                          (<span key={tag.id} id={tag.id} className="inline-flex items-center justify-center px-5 py-2 text-l font-bold leading-none text-white rounded-full border border-lime-600 bg-lime-600" onClick={handleTagClick}>{tag.name}</span>)
+
+                  )}
                   </div>
               </div>
+              <br/>
                 <div className="px-4 py-3 bg-gray-100 text-center sm:px-6">
                   <button
                     type="submit"

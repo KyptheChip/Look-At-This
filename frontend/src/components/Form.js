@@ -113,7 +113,7 @@ export default function Form() {
           <form action="#" onSubmit={handleSubmit}>
             <div className="shadow sm:rounded-md sm:overflow-hidden">
               <div className="px-4 py-5 bg-white space-y-6 sm:p-6">
-                <div className="grid grid-cols-3 gap-3">
+                <div>
                   <div className="col-span-3 sm:col-span-2">
                     <label htmlFor="company-website" className="block text-xl font-medium text-gray-700 ">
                       Title
@@ -163,7 +163,7 @@ export default function Form() {
                 <div className="container h-20 w-full  space-x-4">
                   <label for="formFile" className="form-label block text-xl font-medium text-gray-700">Location tags</label>
                   {allTags.map((tag) => 
-                    <span id={tag.id} class="inline-flex items-center justify-center px-5 py-2 text-l font-bold leading-none text-black rounded-full border border-gray-300" onClick={handleTagClick}>{tag.name}</span>
+                    <span id={tag.id} class="inline-flex items-center justify-center px-5 py-2 text-l font-bold leading-none text-black rounded-full border border-lime-600" onClick={handleTagClick}>{tag.name}</span>
                   )}
                   </div>
               </div>
