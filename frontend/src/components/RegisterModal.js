@@ -4,9 +4,38 @@ import ReactDOM from "react-dom";
 export default function RegisterModal(props) {
   const [showRegisterModal, setShowRegisterModal] = useState(false)
 
+  const [user, setUser] = useState(
+    {
+      id: 0,
+      email: "",
+      username: "",
+      password: "",
+      roles: []
+    }
+  )
 
-  const handleSubmit = () => {
+  const handleChange = event => {
+    const {name, value} = event.target
+    setUser({...user, [name]: value})
+    console.log(user)
+  }
 
+  const handleSubmit = event => {
+    event.preventDefault()
+    fetch("http://localhost:8080/api/auth/register",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(user)
+      }
+    )
+      .then(response => response.json
+      )
+      .then(() => console.log("creat"))
+      .then(() => setShowRegisterModal(false))
+      .catch(function(){})
   }
   return (
     <>
@@ -44,14 +73,27 @@ export default function RegisterModal(props) {
                 </div>
                 {/*body*/}
                 <div className="relative p-6 flex-auto">
-                  <form id="loginForm" className="w-full max-w-xs bg-white flex flex-col py-5 px-8" action="">
+                  <form onSubmit={handleSubmit} id="registerForm" name="registerForm" className="w-full max-w-xs bg-white flex flex-col py-5 px-8" action="">
+                    <label className="text-gray-700 font-bold py-2" htmlFor="">Email</label>
+                    <input
+                      value={user.email}
+                      onChange={handleChange}
+                      className="text-gray-700 shadow border rounded border-gray-300 focus:outline-none focus:shadow-outline py-1 px-3 mb-3"
+                      name="email"
+                      type="text" placeholder="Email"/>
                     <label className="text-gray-700 font-bold py-2" htmlFor="">Username</label>
                     <input
+                      value={user.username}
+                      onChange={handleChange}
                       className="text-gray-700 shadow border rounded border-gray-300 focus:outline-none focus:shadow-outline py-1 px-3 mb-3"
+                      name="username"
                       type="text" placeholder="Username"/>
                     <label className="text-gray-700 font-bold py-2" htmlFor="">Password</label>
                     <input
+                      value={user.password}
+                      onChange={handleChange}
                       className="text-gray-700 shadow border rounded border-gray-300 mb-3 py-1 px-3 focus:outline-none focus:shadow-outline"
+                      name="password"
                       type="password" placeholder="********"/>
                     <div className="flex justify-between items-center my-4">
 
@@ -60,24 +102,14 @@ export default function RegisterModal(props) {
                   </form>
                 </div>
                 {/*footer*/}
-                <div className="flex items-center justify-between p-6 border-t border-solid border-blueGray-200 rounded-b">
-                  <button onClick={() => setShowRegisterModal(false)} form="loginForm" type="submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold rounded py-2 px-4">
+                <div
+                  className="flex items-center justify-between p-6 border-t border-solid border-blueGray-200 rounded-b">
+                  <button onClick={() => {
+                    // setShowRegisterModal(false)
+                  }} form="registerForm" type="submit"
+                          className="bg-blue-500 hover:bg-blue-700 text-white font-bold rounded py-2 px-4">
                     Submit
                   </button>
-                  {/*<button*/}
-                  {/*  className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"*/}
-                  {/*  type="button"*/}
-                  {/*  onClick={() => setShowModal(false)}*/}
-                  {/*>*/}
-                  {/*  Close*/}
-                  {/*</button>*/}
-                  {/*<button*/}
-                  {/*  className="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"*/}
-                  {/*  type="button"*/}
-                  {/*  onClick={() => setShowModal(false)}*/}
-                  {/*>*/}
-                  {/*  Submit*/}
-                  {/*</button>*/}
                 </div>
               </div>
             </div>

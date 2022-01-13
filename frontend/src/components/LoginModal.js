@@ -4,8 +4,41 @@ import RegisterModal from "./RegisterModal";
 export default function LoginModal(props) {
   const [showLoginModal, setShowLoginModal] = useState(false);
 
-  const handleSubmit = () => {
+  const [user, setUser] = useState(
+    {
+      email: "",
+      password: ""
+    }
+  )
 
+  const handleChange = event => {
+    const {name, value} = event.target
+    setUser({...user, [name]: value})
+    console.log(user)
+  }
+
+  const handleSubmit = event => {
+    event.preventDefault()
+    fetch("http://0.0.0.0:8080/api/auth/signin",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(user)
+      }
+    )
+      .then(response => response.json())
+      .then(response => {
+        localStorage.setItem("userId", response.userId)
+        localStorage.setItem("token", response.token)
+        console.log(response.userId)
+      })
+      .then(() => {
+        setShowLoginModal(false)
+        window.location.reload()
+      })
+      .catch(function () {})
   }
   return (
     <>
@@ -41,13 +74,19 @@ export default function LoginModal(props) {
                 </div>
                 {/*body*/}
                 <div className="relative p-6 flex-auto">
-                  <form id="loginForm" className="w-full max-w-xs bg-white flex flex-col py-5 px-8" action="">
-                    <label className="text-gray-700 font-bold py-2" htmlFor="">Username</label>
+                  <form onSubmit={handleSubmit} id="loginForm" className="w-full max-w-xs bg-white flex flex-col py-5 px-8" action="">
+                    <label className="text-gray-700 font-bold py-2" htmlFor="">Email</label>
                     <input
+                      value={user.email}
+                      name="email"
+                      onChange={handleChange}
                       className="text-gray-700 shadow border rounded border-gray-300 focus:outline-none focus:shadow-outline py-1 px-3 mb-3"
                       type="text" placeholder="Username"/>
                       <label className="text-gray-700 font-bold py-2" htmlFor="">Password</label>
                       <input
+                        value={user.password}
+                        name="password"
+                        onChange={handleChange}
                         className="text-gray-700 shadow border rounded border-gray-300 mb-3 py-1 px-3 focus:outline-none focus:shadow-outline"
                         type="password" placeholder="********"/>
                         <div className="flex justify-between items-center my-4">
@@ -58,7 +97,7 @@ export default function LoginModal(props) {
                 </div>
                 {/*footer*/}
                 <div className="flex items-center justify-between p-6 border-t border-solid border-blueGray-200 rounded-b">
-                  <button onClick={() => setShowLoginModal(false)} form="loginForm" type="submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold rounded py-2 px-4">
+                  <button form="loginForm" type="submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold rounded py-2 px-4">
                     Sign In
                   </button>
                   {/*<button*/}

@@ -9,14 +9,14 @@ export default function Navbar() {
 
   let navigate = useNavigate();
 
-  const [loggedIn, setLoggedIn] = useState(localStorage.getItem("user") === null);
+  const [loggedIn, setLoggedIn] = useState(localStorage.getItem("userId") === null);
 
   const handleClickMenu = () => {
     document.querySelector('#menu').classList.toggle('hidden');
   }
 
   const handleClick = () => {
-    if (localStorage.getItem("user") === null) {
+    if (localStorage.getItem("userId") === null) {
       navigate("/login");
     } else {
       navigate("/add-location");
@@ -89,7 +89,8 @@ export default function Navbar() {
              </li>
              <li>
                <button className="md:p-4 py-2 block hover:text-lime-600 text-2xl" onClick={() => {
-                 localStorage.removeItem("user")
+                 localStorage.removeItem("userId")
+                 localStorage.removeItem("token")
                  window.location.reload()
                }}>Log Out
                </button>
