@@ -1,7 +1,6 @@
 import React, {useState} from "react";
-import RegisterModal from "./RegisterModal";
 
-export default function LoginModal(props) {
+export default function LoginModal() {
   const [showLoginModal, setShowLoginModal] = useState(false);
 
   const [user, setUser] = useState(
@@ -53,7 +52,7 @@ export default function LoginModal(props) {
   return (
     <>
       <a
-        className="md:p-4 py-2 block hover:text-lime-600 text-2xl"
+        className="md:p-4 py-2 block text-lime-600 hover:text-lime-800 text-2xl"
         onClick={() => setShowLoginModal(true)}
       >
         Login

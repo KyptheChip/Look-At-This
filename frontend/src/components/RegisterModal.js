@@ -1,7 +1,6 @@
-import React, {useEffect, useState} from "react";
-import ReactDOM from "react-dom";
+import React, { useState} from "react";
 
-export default function RegisterModal(props) {
+export default function RegisterModal() {
   const [showRegisterModal, setShowRegisterModal] = useState(false)
 
   const [user, setUser] = useState(
@@ -40,7 +39,7 @@ export default function RegisterModal(props) {
   return (
     <>
       <a
-        className="md:p-4 py-2 block hover:text-lime-600 text-2xl"
+        className="md:p-4 py-2 block text-lime-600 hover:text-lime-800 text-2xl"
         onClick={() => {
           setShowRegisterModal(true)
         }}

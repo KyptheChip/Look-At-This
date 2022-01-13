@@ -98,7 +98,6 @@ export default function Form() {
       .then(response => response.json())
       .catch(function() {});
     setTimeout(() => navigate('/location-list'), 500)
-
   }
 
   return (

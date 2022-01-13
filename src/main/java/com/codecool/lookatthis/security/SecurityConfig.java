@@ -41,7 +41,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeRequests() // restrict access based on the config below:
-                .antMatchers("/api/auth/**", "/location/list", "/location/search/**", "location/tag/**", "/tag/**", "/location/get/**").permitAll()
+                .antMatchers("/api/auth/**", "/location/list", "/location/search/**", "/location/tag/**", "/tag/**", "/location/get/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 // Here we define our custom filter that uses the JWT tokens for authentication.

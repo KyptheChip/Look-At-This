@@ -41,8 +41,8 @@ export default function UpdateForm() {
           latitude: response.latitude
         })
         setImageUrl(response.imageData)
-        setLocationTags(response.tags)
-        console.log(location)
+        // setLocationTags(response.tags)
+        // console.log(location)
       })
   }, []);
 
@@ -185,12 +185,12 @@ export default function UpdateForm() {
                   <label for="formFile" className="form-label block text-xl font-medium text-gray-700">Location tags</label>
                   <br/>
                   {allTags.map((tag) =>
-                        locationTags.includes(tag) ?
+                        // !locationTags.includes(tag) ?
                         // console.log("da")
                           (<span key={tag.id} id={tag.id} className="inline-flex items-center justify-center px-5 py-2 text-l font-bold leading-none text-black rounded-full border border-lime-600" onClick={handleTagClick}>{tag.name}</span>)
-                      :
+                      // :
                         // console.log("nu")
-                          (<span key={tag.id} id={tag.id} className="inline-flex items-center justify-center px-5 py-2 text-l font-bold leading-none text-white rounded-full border border-lime-600 bg-lime-600" onClick={handleTagClick}>{tag.name}</span>)
+                        //   (<span key={tag.id} id={tag.id} className="inline-flex items-center justify-center px-5 py-2 text-l font-bold leading-none text-white rounded-full border border-lime-600 bg-lime-600" onClick={handleTagClick}>{tag.name}</span>)
 
                   )}
                   </div>

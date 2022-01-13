@@ -17,7 +17,7 @@ export default function LocationsList() {
   }, []);
 
   const getLocationsByTag = async event => {
-    fetch('http://localhost:8080/locations/tag/' + event.target.id)
+    fetch('http://localhost:8080/location/tag/' + event.target.id)
       .then(response => response.json())
       .then((response) => {
         setLocationList(response)
@@ -39,11 +39,11 @@ export default function LocationsList() {
     <section className="container mx-auto px-4">
       <div className="container columns-2xl space-y-12">
         {locationList.map((location) => (  
-          <div class="max-w-2xl mx-auto overflow-hidden  bg-white rounded-lg shadow-md border border-lime-600">
+          <div class="max-w-2xl mx-auto overflow-hidden bg-white rounded-lg shadow-md border border-lime-600">
             <img class="object-cover w-full h-64" src={`data:image/jpeg;base64,${location.imageData}`} alt="Article"/>
             <div class="p-6">
               <div>
-              {location.tags.map(tag => <span key={tag.id} id={tag.id} className="text-xs font-medium text-blue-600 uppercase" onClick={getLocationsByTag}>#{tag.name} </span>)}
+              {location.tags.map(tag => <span key={tag.id} id={tag.id} className="text-xs font-medium text-blue-600 uppercase" onClick={getLocationsByTag}>#{tag.name}   </span>)}
                   <a href="#" class="block mt-2 text-2xl font-semibold text-gray-800 dark:text-white hover:text-gray-600 hover:underline"><Link to={"/location/" + location.id}>{location.title}</Link></a>
                   <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">{location.message}</p>
               </div>

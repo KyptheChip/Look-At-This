@@ -55,7 +55,7 @@ export default function LocationPage() {
                 <p>{location.tags.map(tag => <span key={tag.id} id={tag.id}>#{tag.name} </span>)}</p>
               </div>
               <div>
-                <h3 className="class=block mt-2 text-2xl font-semibold text-gray-800 dark:text-white">Comments</h3>
+                {/*<h3 className="class=block mt-2 text-2xl font-semibold text-gray-800 dark:text-white">Comments</h3>*/}
                 {/*{location.comments.map(comment => <p>{comment}</p>)}*/}
               </div>
                 {localStorage.getItem("username") === location.username ?

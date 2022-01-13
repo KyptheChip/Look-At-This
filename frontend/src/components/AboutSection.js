@@ -1,5 +1,4 @@
 import React from 'react';
-import {Link} from 'react-router-dom'
 
 export default function AboutSection() {
     
@@ -13,7 +12,7 @@ export default function AboutSection() {
                             in visiting new places and are in search of inspiration!</p>
 
                         <div class="py-5">
-                            <a href="#" class="text-white rounded-full py-2 px-5 text-lg font-semibold bg-lime-800 inline-block border border-lime-600 mr-3"><Link to="/add-location">Get started</Link></a>
+                            <a href="#" class="text-white rounded-full py-2 px-5 text-lg font-semibold bg-lime-800 inline-block border border-lime-600 mr-3">Get started</a>
                         </div>
 
                     </div>

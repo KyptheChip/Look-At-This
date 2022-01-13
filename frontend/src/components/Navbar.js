@@ -87,7 +87,7 @@ export default function Navbar() {
                </button>
              </li>
              <li>
-               <button className="md:p-4 py-2 block hover:text-lime-600 text-2xl" onClick={() => {
+               <button className="md:p-4 py-2 block text-lime-600 hover:text-lime-800 text-2xl" onClick={() => {
                  localStorage.removeItem("userId")
                  localStorage.removeItem("token")
                  localStorage.removeItem("username")
