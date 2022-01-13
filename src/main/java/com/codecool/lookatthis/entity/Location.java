@@ -33,6 +33,9 @@ public class Location {
     @Column(name="longitude", nullable = false)
     private double longitude;
 
+    @Column(name="username", nullable = false)
+    private String username;
+
     @OneToMany(targetEntity = Tag.class)
     private Set<Tag> tags;
 }

@@ -72,34 +72,35 @@ export default function Navbar() {
              md:flex
              md:justify-between
              md:pt-0"
-          >
-            <li>
-              <a className="md:p-4 py-2 block hover:text-lime-600 text-2xl"
-              ><Link to="/">Home</Link></a>
-            </li>
-            <li>
-              <a className="md:p-4 py-2 block hover:text-lime-600 text-2xl"
-              ><Link to="/location-list">All locations</Link></a>
-            </li>
-            {!loggedIn ?
-              (<>
-                  <li>
-                    <a onClick={handleClick} className="md:p-4 py-2 block hover:text-lime-600 text-2xl">Add
-                      location
-                    </a>
-                  </li>
-                  <li>
-                    <a className="md:p-4 py-2 block hover:text-lime-600 text-2xl" onClick={() => {
-                      localStorage.removeItem("userId")
-                      localStorage.removeItem("token")
-                      window.location.reload()
-                    }}>Log Out
-                    </a>
-                  </li>
-                </>
-              )
-              : (<>
-                <li>
+         >
+           <li>
+             <a class="md:p-4 py-2 block hover:text-lime-600 text-2xl" 
+               ><Link to="/">Home</Link></a>
+           </li>
+           <li>
+             <a class="md:p-4 py-2 block hover:text-lime-600 text-2xl" 
+               ><Link to="/location-list">All locations</Link></a>
+           </li>
+           {!loggedIn ?
+             (<>
+               <li>
+               <button onClick={handleClick} class="md:p-4 py-2 block hover:text-lime-600 text-2xl">Add location
+               </button>
+             </li>
+             <li>
+               <button className="md:p-4 py-2 block hover:text-lime-600 text-2xl" onClick={() => {
+                 localStorage.removeItem("userId")
+                 localStorage.removeItem("token")
+                 localStorage.removeItem("username")
+                 localStorage.removeItem("status")
+                 window.location.reload()
+               }}>Log Out
+               </button>
+             </li>
+               </>
+             )
+             : (<>
+               <li>
                   <LoginModal/>
                 </li>
                 <li>

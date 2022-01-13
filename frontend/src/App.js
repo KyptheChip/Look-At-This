@@ -20,7 +20,7 @@ function App() {
               <br/>
               <div>
               <Routes>
-                  <Route exact path='/' element={<LandingPage className="bg-gradient-to-r from-yellow-100 to-lime-100"/>}/>
+                  <Route exact path='/' element={<LandingPage/>}/>
                   <Route exact path='/add-location' element={<Form/>}/>
                   <Route exact path='/location-list' element={<LocationsList/>}/>
                   <Route exact path='/location/:locationId' element={<LocationPage/>}/>
