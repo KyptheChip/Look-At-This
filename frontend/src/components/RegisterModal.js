@@ -39,14 +39,14 @@ export default function RegisterModal(props) {
   }
   return (
     <>
-      <button
+      <a
         className="md:p-4 py-2 block hover:text-lime-600 text-2xl"
         onClick={() => {
           setShowRegisterModal(true)
         }}
       >
         Register
-      </button>
+      </a>
       {showRegisterModal ? (
         <>
           <div
@@ -55,7 +55,7 @@ export default function RegisterModal(props) {
             <div className="relative w-auto my-6 mx-auto max-w-3xl">
               {/*content*/}
               <div
-                className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+                className="border-8 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-8 border-lime-600">
                 {/*header*/}
                 <div
                   className="flex items-start justify-between p-5 border-b border-solid border-blueGray-200 rounded-t">
@@ -63,10 +63,10 @@ export default function RegisterModal(props) {
                     Register
                   </h3>
                   <button
-                    className="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
+                    className="p-1 ml-auto bg-transparent border-0 text-black float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
                     onClick={() => setShowRegisterModal(false)}
                   >
-                    <span className="bg-transparent text-black h-6 w-6 text-2xl block outline-none focus:outline-none">
+                    <span className="bg-transparent hover:text-red-400 text-lime-600 h-6 w-6 text-2xl block outline-none focus:outline-none">
                       x
                     </span>
                   </button>
@@ -78,21 +78,21 @@ export default function RegisterModal(props) {
                     <input
                       value={user.email}
                       onChange={handleChange}
-                      className="text-gray-700 shadow border rounded border-gray-300 focus:outline-none focus:shadow-outline py-1 px-3 mb-3"
+                      className="text-gray-700 shadow border rounded border-gray-300 focus:ring-lime-600 focus:border-lime-600 py-1 px-3 mb-3"
                       name="email"
                       type="text" placeholder="Email"/>
                     <label className="text-gray-700 font-bold py-2" htmlFor="">Username</label>
                     <input
                       value={user.username}
                       onChange={handleChange}
-                      className="text-gray-700 shadow border rounded border-gray-300 focus:outline-none focus:shadow-outline py-1 px-3 mb-3"
+                      className="text-gray-700 shadow border rounded border-gray-300 focus:ring-lime-600 focus:border-lime-600 py-1 px-3 mb-3"
                       name="username"
                       type="text" placeholder="Username"/>
                     <label className="text-gray-700 font-bold py-2" htmlFor="">Password</label>
                     <input
                       value={user.password}
                       onChange={handleChange}
-                      className="text-gray-700 shadow border rounded border-gray-300 mb-3 py-1 px-3 focus:outline-none focus:shadow-outline"
+                      className="text-gray-700 shadow border rounded border-gray-300 mb-3 py-1 px-3 focus:ring-lime-600 focus:border-lime-600"
                       name="password"
                       type="password" placeholder="********"/>
                     <div className="flex justify-between items-center my-4">
@@ -103,11 +103,11 @@ export default function RegisterModal(props) {
                 </div>
                 {/*footer*/}
                 <div
-                  className="flex items-center justify-between p-6 border-t border-solid border-blueGray-200 rounded-b">
+                  className="flex place-content-center p-6 border-t border-solid border-blueGray-200 rounded-b">
                   <button onClick={() => {
                     // setShowRegisterModal(false)
                   }} form="registerForm" type="submit"
-                          className="bg-blue-500 hover:bg-blue-700 text-white font-bold rounded py-2 px-4">
+                          className="border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-lime-600 hover:bg-lime-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-lime-800 py-2 px-4">
                     Submit
                   </button>
                 </div>
