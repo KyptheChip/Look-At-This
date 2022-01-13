@@ -15,16 +15,14 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+@CrossOrigin("http://localhost:3000/")
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
@@ -60,10 +58,10 @@ public class AuthController {
 
             Map<Object, Object> model = new HashMap<>();
             model.put("userId", client.getId());
-//            model.put("username", client.getUsername());
+            model.put("username", client.getUsername());
 //            model.put("roles", roles);
             model.put("token", token);
-//            model.put("status", 200);
+            model.put("status", 200);
             return ResponseEntity.ok(model);
         } catch (AuthenticationException e) {
             throw new BadCredentialsException("Invalid email/password supplied");

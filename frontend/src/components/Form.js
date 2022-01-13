@@ -50,12 +50,12 @@ export default function Form() {
   }
 
   const handleTagClick = (event) => {
-    
+
     let tag = {
       id: event.target.id,
       name: event.target.innerText
     }
-    
+
     event.target.classList.toggle("bg-lime-600")
     if(event.target.classList.contains("text-black")) {
       event.target.classList.replace("text-black", "text-white")
@@ -95,8 +95,8 @@ export default function Form() {
       })
       .then(response => response.json())
       .catch(function() {});
-      setTimeout(() => navigate('/location-list'), 500)
-      
+    setTimeout(() => navigate('/location-list'), 500)
+
   }
 
   return (
@@ -121,7 +121,7 @@ export default function Form() {
                         type="text"
                         name="title"
                         id="locationName" value={location.title} onChange={handleChange} required
-                        className="bg-gray-100 border border-lime-800 text-gray-900 sm:text-xs rounded-lg focus:ring-lime-800 focus:border-lime-800 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        className="bg-gray-100 border border-lime-800 text-gray-900 sm:text-xs rounded-lg focus:ring-lime-800 focus:border-lime-800 block w-full p-2.5"
                         placeholder="Give your location a title"
                       />
                     </div>
@@ -137,18 +137,18 @@ export default function Form() {
                       id="message" 
                       name="message"
                       rows={3}
-                      className="bg-gray-100 border border-lime-800 text-gray-900 sm:text-sm rounded-lg focus:ring-lime-800 focus:border-lime-800 block w-full p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                      className="bg-gray-100 border border-lime-800 text-gray-900 sm:text-sm rounded-lg focus:ring-lime-800 focus:border-lime-800 block w-full p-2"
                       placeholder="Enter your description here"
                     />
                   </div>
                 </div>
                 <div className="col-span-6 sm:col-span-3">
                   <label for="first_name" class="block text-xl font-medium text-gray-700">Location latitude</label>
-                  <p className="bg-gray-100 border border-lime-800 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 cursor-not-allowed dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-500 dark:text-gray-500 dark:focus:ring-blue-500 dark:focus:border-blue-500" id="locationLatitude">{coordinates.latitude}</p>
+                  <p className="bg-gray-100 border border-lime-800 text-gray-900 sm:text-sm rounded-lg block w-full p-2.5 cursor-not-allowed" id="locationLatitude">{coordinates.latitude}</p>
                 </div>
                 <div className="col-span-6 sm:col-span-3">
                   <label for="last_name" class="block text-xl font-medium text-gray-700">Location longitude</label>
-                  <p className="bg-gray-100 border border-lime-800 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 cursor-not-allowed dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-500 dark:text-gray-500 dark:focus:ring-blue-500 dark:focus:border-blue-500" id="locationLongitude">{coordinates.longitude}</p>
+                  <p className="bg-gray-100 border border-lime-800 text-gray-900 sm:text-sm rounded-lg block w-full p-2.5 cursor-not-allowed" id="locationLongitude">{coordinates.longitude}</p>
                 </div>
                 <div>
                   <label for="formFile" className="form-label block text-xl font-medium text-gray-700">Location photo</label>
