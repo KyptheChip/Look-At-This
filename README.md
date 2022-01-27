@@ -9,5 +9,16 @@ Locations are displayed with an image of the location, its description and its l
 
 ### Technologies Used
 
+- Java, backend programming language
+- Spring, powerful Java framework to make everything easier
+- JavaScript, frontend programming language
+- React, JavaScript library to make building page components easier
+- PostgreSQL, for our database
+- Git & Github, for version control
+- CSS3
+- TailwindCSS, to make CSS easier
+- Mapbox, for map functionality
+- Intellij I
+
 <!-- TODO: Add tech logos -->
 <!-- Also add images with the website's pages -->
