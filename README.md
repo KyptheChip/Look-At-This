@@ -11,6 +11,8 @@ But logging in lets you:
 - edit/delete one of the locations you added
 - add comments to any location
 
+![app](https://user-images.githubusercontent.com/70326660/156239264-65e0dfd1-8666-4a34-85d5-dcb26530edb2.png)
+
 ### Technologies Used
 
 #### Back-end
